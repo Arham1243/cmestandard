@@ -187,7 +187,7 @@ class DashboardController extends Controller
             $activity->update(['certificate' => $certificatePath]);
         }
 
-        $this->updateCreditHours();
+        // $this->updateCreditHours();
         $user = Auth::user();
 
         $data = [
@@ -294,7 +294,7 @@ class DashboardController extends Controller
         }
 
 
-        $this->updateCreditHours();
+        // $this->updateCreditHours();
 
         // Redirect with success message
         return redirect()->route('dashboard.activity_listing')->with('notify_success', 'Trainings Updated Successfully!');
@@ -305,7 +305,7 @@ class DashboardController extends Controller
     public function delete_activity($id)
     {
         $doctors_experience = Doctor_activity::where('id', $id)->delete();
-        $this->updateCreditHours();
+        // $this->updateCreditHours();
         return redirect()->route('dashboard.activity_listing')->with('notify_success', 'Training Deleted Successfuly!!');
     }
 }

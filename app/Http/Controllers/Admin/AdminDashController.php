@@ -2315,7 +2315,7 @@ class AdminDashController extends Controller
     {
         $doctors_experience = Doctor_activity::where('id', $id)->first();
         $doctors_experience->delete();
-        $this->updateCreditHours($doctors_experience->user_id);
+        // $this->updateCreditHours($doctors_experience->user_id);
         return redirect()->route('admin.training_listing')->with('notify_success', 'Training Deleted Successfuly!!');
     }
 }

@@ -58,7 +58,9 @@ class User extends Authenticatable
     public function determineBadgeId()
     {
         // Get the total credit hours
-        $total_credit_hours = $this->total_credit_hours ?? 0;
+        $total_credit_hours = Doctor_activity::where('user_id', $this->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
+            ->sum('credit_hours');
         // Find the appropriate badge based on the total credit hours
         $badge = Badges::where('min_credit_hours', '<=', $total_credit_hours)
             ->where(function ($query) use ($total_credit_hours) {
