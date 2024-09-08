@@ -22,7 +22,7 @@
 
                     </div>
                 </div>
-                <button id="download-pdf" data-doctor-name="{{ $user->full_name }}" class="themeBtn" style="width:11rem;">
+                <button id="download-pdf" data-doctor-name="{{ $user->full_name }}" class="themeBtn" style="width:12rem;">
                     <div class="spinner-border d-none user-select-none" role="status"> </div>
                     <span class="btn-text user-select-none">Download Profile</span>
 
