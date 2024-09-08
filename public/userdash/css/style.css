@@ -21,8 +21,8 @@ body {
 }
 
 :root {
-	--c1: #2B2E3E;
-	--c2: #16192a;
+	--c1: #d0962a;
+	--c2: #fbf5ea;
 }
 
 a,
@@ -1432,9 +1432,10 @@ li {
 	left: 0;
 	width: 300px;
 	height: 100vh;
-	background: var(--c1);
+	background: #fff;
 	z-index: 2;
 	transition: all .5s ease;
+	box-shadow: 0 0 20px 5px #00000020;
 }
 
 .dashboard-sidebar-close>a {
@@ -1453,7 +1454,8 @@ li {
 }
 
 .dashboard-sidebar .dashboard-sidebar-logo {
-	padding: 40px 70px 20px;
+	padding: 20px 30px 20px;
+	background: #fff;
 }
 
 .dashboard-sidebar .dashboard-sidebar-logo img {
@@ -1481,17 +1483,18 @@ li {
 	font-size: 16px;
 	font-weight: 700;
 	text-transform: capitalize;
-	color: #fff;
+	color: #000;
 }
 
 .dashboard-sidebar .dashboard-sidebar-links>ul>li>a>figure {
 	display: block;
 	min-width: 40px;
 }
-
+.dashboard-sidebar .dashboard-sidebar-links>ul>li.active>a, .dashboard-sidebar .dashboard-sidebar-links>ul>li>a:hover img {
+}
 .dashboard-sidebar .dashboard-sidebar-links>ul>li>a>figure>img {
-	transition: all .5s ease-in-out;
-	filter: brightness(0) invert(1);
+	transition: all .5s 500ms ease-in-out;
+	filter: brightness(0);
 	width: 25px;
 	height: 25px;
 	object-fit: contain;
@@ -1500,7 +1503,6 @@ li {
 .dashboard-sidebar .dashboard-sidebar-links>ul>li.active>a,
 .dashboard-sidebar .dashboard-sidebar-links>ul>li>a:hover {
 	background: var(--c2);
-	color: #fff;
 }
 
 .dashboard-sidebar .dashboard-sidebar-logo a {
