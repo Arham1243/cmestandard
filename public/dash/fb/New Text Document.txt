@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="fb/style.css">
+<script type="text/javascript">
+
+
+ $(document).ready(function() {
+  $(".fancybox").fancybox();
+  
+ });
+ 
+
+ </script>
+<script type="text/javascript" src="fb/script.js"></script>
