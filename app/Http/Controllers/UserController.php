@@ -17,7 +17,7 @@ use App\Models\Sub_category;
 use App\Models\Newsletter;
 
 use App\Models\Password_resets;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 use DB;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +53,7 @@ class UserController extends Controller
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            return redirect()->route('home')->with('notify_success', 'Logged In!');
+            return redirect()->route('doctor_profile', Auth::user()->slug)->with('notify_success', 'Logged In!');
         } else {
             return back()->with('notify_error', 'Invalid Credentials');
         }

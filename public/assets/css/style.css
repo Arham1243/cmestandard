@@ -103,7 +103,9 @@ i.bx {
     font-family: var(--secondary-font);
     box-shadow: 0px 0px 7px 0 rgb(0 0 0 / 21%);
 }
-
+.themeBtn--sm {
+    font-size: 0.95rem;
+}
 .themeBtn i {
     font-size: 1rem;
 }

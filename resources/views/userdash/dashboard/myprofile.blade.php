@@ -17,7 +17,7 @@
 
                             <a href="{{ route('doctor_profile', Auth::user()->slug) }}"
                                 class="primary-btn primary-bg mc-r-2" target="_blank"><i class="fa fa-eye"></i> View my
-                                Public profile</a>
+                                profile</a>
 
                         </div>
                     </div>

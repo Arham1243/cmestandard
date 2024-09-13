@@ -22,11 +22,18 @@
 
                     </div>
                 </div>
-                <button id="download-pdf" data-doctor-name="{{ $user->full_name }}" class="themeBtn" style="width:12rem;">
-                    <div class="spinner-border d-none user-select-none" role="status"> </div>
-                    <span class="btn-text user-select-none">Download Profile</span>
+                <div class="d-flex align-items-center gap-3">
+                    @if (Auth::check())
+                        <a href="{{ route('dashboard.editProfile') }}" target="_blank" class="themeBtn themeBtn--sm"><i class='bx bxs-edit-alt' ></i>Edit
+                            Profile</a>
+                    @endif
+                    <button id="download-pdf" data-doctor-name="{{ $user->full_name }}" class="themeBtn themeBtn--sm"
+                        style="width:12rem;">
+                        <div class="spinner-border d-none user-select-none" role="status"> </div>
+                        <span class="btn-text user-select-none"><i class='bx bxs-download'></i>Download Profile</span>
 
-                </button>
+                    </button>
+                </div>
             </div>
 
 
