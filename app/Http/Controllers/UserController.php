@@ -65,8 +65,8 @@ class UserController extends Controller
         // Validation
         $validator = $request->validate([
             'email' => 'required|email|unique:users|max:255',
+            'academic_title' => 'required',
             'full_name' => 'required',
-            'phone' => 'required',
             'speciality_area_id' => 'required',
             'speciality_interest_id' => 'required',
             'qualification' => 'required',
@@ -90,6 +90,7 @@ class UserController extends Controller
         $user = User::create([
             'slug' => $slug,
             'password' => bcrypt($request['password']),
+            'academic_title' => $request['academic_title'],
             'full_name' => $request['full_name'],
             'phone' => $request['phone'],
             'email' => $request['email'],

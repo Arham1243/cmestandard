@@ -7,7 +7,7 @@
                 <div class="row align-items-center mb-5 pb-2">
                     <div class="col-lg-5 col-md-5 col-12">
                         <div class="primary-heading color-dark">
-                            <h2>Add Training</h2>
+                            <h2>Add my CME training</h2>
                         </div>
                     </div>
                 </div>
@@ -25,12 +25,28 @@
                                 @enderror
                             </div>
                         </div>
+                      
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="form-group">
+                                <label class="sub-heading">Select Speciality</label>
+                                <select name="speciality_area_id" required class="form-control">
+                                    <option value="" disabled selected>Select</option>
+                                    @foreach ($speciality_areas as $speciality)
+                                        <option value="{{ $speciality->id }}"
+                                            {{ old('speciality_area_id') == $speciality->id ? 'selected' : '' }}>
+                                            {{ $speciality->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('speciality_area_id'))
+                                    <span class="text-danger">{{ $errors->first('speciality_area_id') }}</span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
                                 <label class="sub-heading"> Category:</label>
-
-
-                                <select name="category_id" class="form-control">
+                                <select name="category_id" class="form-control" required>
                                     <option value="" disabled selected>Select</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category['id'] }}"
@@ -45,7 +61,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
                                 <label class="sub-heading"> Provider / Accreditor *
@@ -149,7 +164,7 @@
 
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
-                                <label class="sub-heading"> Location (if case of Live in-person)
+                                <label class="sub-heading"> Location (in case of live in-person)
 
                                     :</label>
                                 <input type="text" name="in_person_location" class="form-control"
@@ -290,7 +305,16 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="form-group">
+                                <label class="sub-heading">Endorser Email Address:</label>
+                                <input type="email" name="endorser_email" class="form-control"
+                                    value="{{ old('endorser_email') }}" required>
+                                @error('endorser_email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
                                 <label class="sub-heading">Endorser City:</label>
@@ -313,16 +337,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-12 col-12">
-                            <div class="form-group">
-                                <label class="sub-heading">Endorser Email Address:</label>
-                                <input type="email" name="endorser_email" class="form-control"
-                                    value="{{ old('endorser_email') }}" required>
-                                @error('endorser_email')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+
 
 
                         <div class="col-lg-12 col-md-12 col-12 mt-4">

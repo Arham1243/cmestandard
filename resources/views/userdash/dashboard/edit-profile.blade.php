@@ -11,10 +11,13 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-12">
-                        <div class="text-md-right">
-                            <a href="{{ route('dashboard.myProfile') }}" class="primary-btn primary-bg mc-r-2"><i
-                                    class="fa fa-user"></i> My Profile</a>
+                        <div class="text-md-right d-flex justify-content-end">
+                            <a href="{{ route('doctor_profile', Auth::user()->slug) }}" class="primary-btn primary-bg mc-r-2"
+                                target="_blank"><i class="fa fa-eye"></i> View my
+                                profile</a>
 
+                            <a href="{{ route('dashboard.passwordChange') }}" class="primary-btn primary-bg"><i
+                                    class="fa fa-user"></i> Change Password</a>
                         </div>
                     </div>
                 </div>
@@ -38,23 +41,55 @@
                             </div>
                         </div>
 
-                        <!-- About Info Fields -->
+
                         <div class="col-lg-6 col-md-6 col-12">
-                            <div class="form-group">
-                                <label><i class="fa fa-user"></i> Full Name <span>*</span></label>
-                                <input type="text" name="full_name" required class="form-control"
-                                    value="{{ $user->full_name }}">
-                                @if ($errors->has('full_name'))
-                                    <span class="text-danger">{{ $errors->first('full_name') }}</span>
-                                @endif
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label><i class="fa fa-graduation-cap"></i> Title <span>*</span></label>
+                                        @php
+                                            $academic_titles = ['Dr.', 'Prof.', 'Asst. Prof.', 'Asoc. Prof.'];
+                                        @endphp
+                                        <select name="academic_title" required class="form-control text-uppercase">
+                                            <option value="" disabled selected>Select</option>
+                                            @foreach ($academic_titles as $academic_title)
+                                                <option value="{{ $academic_title }}"
+                                                    {{ $user->academic_title == $academic_title ? 'selected' : '' }}>
+                                                    {{ $academic_title }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('academic_title'))
+                                            <span class="text-danger">{{ $errors->first('academic_title') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group pl-3">
+                                        <label><i class="fa fa-user"></i> Full Name <span>*</span></label>
+                                        <input type="text" name="full_name" required class="form-control"
+                                            value="{{ $user->full_name }}">
+                                        @if ($errors->has('full_name'))
+                                            <span class="text-danger">{{ $errors->first('full_name') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
-                                <label><i class="fa fa-phone"></i> Phone <span>*</span></label>
-                                <input type="tel" name="phone" required class="form-control"
-                                    value="{{ $user->phone }}">
+                                <label><i class="fa fa-phone"></i> Phone </label>
+                                <input type="tel" name="phone" class="form-control" value="{{ $user->phone }}">
+                                <div class="form-check mt-2 text-right">
+                                    <input class="form-check-input" type="checkbox" value="1" id="showOnProfile"
+                                        name="phone_show_on_profile"
+                                        {{ $user->phone_show_on_profile == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="showOnProfile">
+                                        Show On Profile
+                                    </label>
+                                </div>
                                 @if ($errors->has('phone'))
                                     <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 @endif
@@ -80,7 +115,8 @@
                         </div>
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
-                                <label><i class="fa fa-graduation-cap"></i> Select Speciality Area <span>*</span></label>
+                                <label><i class="fa fa-graduation-cap"></i> Select Speciality Interest
+                                    <span>*</span></label>
                                 <select name="speciality_interest_id" required class="form-control">
                                     <option value="" disabled selected>Select</option>
                                     @foreach ($speciality_interests as $interest)
@@ -374,6 +410,27 @@
         }
 
         /*select2*/
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: fit-content;
+            margin-left: auto;
+        }
+
+        .form-check label {
+            line-height: 1;
+            display: block;
+            margin-top: 0.2rem;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .form-check-input {
+            accent-color: var(--c1);
+            scale: 1.3;
+        }
     </style>
 @endsection
 @section('js')

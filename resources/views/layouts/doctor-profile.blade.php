@@ -5,12 +5,12 @@
                 <div class="col-md-6">
                     <div class="doc-profile__img">
                         <img src='{{ asset($user->profile_img ?? 'assets/images/placeholder.png') }}'
-                            alt='{{ $user->full_name }}' class='imgFluid' loading='lazy'>
+                            alt='{{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
                     </div>
                     <div class="doc-profile__content">
                         <div class="doc-details">
                             <h2 class="doc-profile__name">
-                                {{ $user->full_name }}
+                                {{ $user->title_full_name }}
                                 @if ($user->badge)
                                     <img src="{{ asset('assets/images/' . $user->badge->name . '.png') }}"
                                         alt='{{ $user->badge->name }}' class='imgFluid profile-content__badge'
@@ -101,6 +101,13 @@
                                     {{ $user->email }} <br>
                                 </div>
                             </div>
+                            @if ($user->phone_show_on_profile == '1')
+                                <div class="doc-contact__item">
+                                    <div class="doc-contact__info">
+                                        {{ $user->phone }} <br>
+                                    </div>
+                                </div>
+                            @endif
 
                         </div>
 
@@ -119,7 +126,7 @@
                         <thead>
                             <tr>
                                 <th>CME ID</th>
-                                <th>Title</th>
+                                <th class="text-start">Title</th>
                                 <th>Category</th>
                                 <th>Provider / Accreditor</th>
                                 <th>Format</th>
@@ -134,7 +141,7 @@
                             @foreach ($trainings as $training)
                                 <tr>
                                     <td>{{ $training->custom_id }}</td>
-                                    <td>{{ $training->title }}</td>
+                                    <td class="text-start">{{ $training->title }}</td>
                                     <td>{{ $training->category->name ?? '' }}</td>
                                     <td>{{ $training->grand_provide }}</td>
                                     <td>{{ $training->format }}</td>

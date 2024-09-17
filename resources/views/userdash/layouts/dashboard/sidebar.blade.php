@@ -2,39 +2,31 @@
 
  <section class="dashboard-sidebar">
      <div class="dashboard-sidebar-logo">
-         <a href="{{ route('welcome') }}" title="Visit Site"><img src="{{ asset($logo->img_path) }}"
-                 alt="dashboard-logo"></a>
+         <a href="{{ route('home') }}" title="Visit Site"><img src="{{ asset($logo->img_path) }}" alt="dashboard-logo"></a>
      </div>
      <div class="dashboard-sidebar-links">
          <ul>
-             <li class=""><a href="{{ route('welcome') }}">
-                     <figure class="mb-0"><img src="{{ asset('userdash/images/dashboard-link-1.png') }}"
-                             alt="dashboard-link-icon"></figure>
-                     <span>Home</span>
+             <li class=""><a target="_blank" href="{{ route('doctor_profile', Auth::user()->slug) }}">
+                     <figure class="mb-0"><i class='bx bxs-user'></i></figure>
+                     <span>{{ Auth::user()->title_full_name }}</span>
                  </a></li>
-             <li><a href="{{ route('dashboard.myProfile') }}">
-                     <figure class="mb-0"><img src="{{ asset('userdash/images/dashboard-link-4.png') }}"
-                             alt="dashboard-link-icon"></figure>
-                     <span>My Profile</span>
-                 </a></li>
-             <li><a href="{{ route('dashboard.passwordChange') }}">
-                     <figure class="mb-0"><img src="{{ asset('userdash/images/dashboard-link-4.png') }}"
-                             alt="dashboard-link-icon"></figure>
-                     <span>Change Password</span>
+             <li><a href="{{ route('dashboard.editProfile') }}"
+                     class="{{ Request::url() == route('dashboard.editProfile') ? 'active' : '' }}">
+                     <figure class="mb-0"><i class='bx bxs-edit-alt'></i></figure>
+                     <span>My Profile - Edit</span>
                  </a></li>
 
-             <li><a href="{{ route('dashboard.activity_listing') }}">
-                     <figure class="mb-0"><img src="{{ asset('userdash/images/dashboard-link-2.png') }}"
-                             alt="dashboard-link-icon"></figure>
-                     <span>my Trainings</span>
+
+             <li><a href="{{ route('dashboard.activity_listing') }}" class="{{ Request::url() == route('dashboard.activity_listing') ? 'active' : '' }}">
+                     <figure class="mb-0"><i class='bx bxs-graduation'></i></figure>
+                     <span>My CME Trainings</span>
                  </a></li>
 
 
 
 
              <li><a href="{{ route('logout') }}">
-                     <figure class="mb-0"><img src="{{ asset('userdash/images/dashboard-link-5.png') }}"
-                             alt="dashboard-link-icon"></figure>
+                     <figure class="mb-0"><i class='bx bxs-log-out'></i></figure>
                      <span>Logout</span>
                  </a></li>
          </ul>

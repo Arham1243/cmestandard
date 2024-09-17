@@ -7,11 +7,11 @@
                 <div class="topbar-profile">
                     <div class="topbar-profile__img">
                         <img src='{{ asset($user->profile_img ?? 'assets/images/placeholder.png') }}'
-                            alt='{{ $user->full_name }}' class='imgFluid' loading='lazy'>
+                            alt='{{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
                     </div>
                     <div class="topbar-profile__details">
 
-                        <div class="name">{{ $user->full_name }}
+                        <div class="name">{{ $user->title_full_name }}
                             @if ($user->badge)
                                 <img src="{{ asset('assets/images/' . $user->badge->name . '.png') }}"
                                     alt='{{ $user->badge->name }}' class='imgFluid profile-content__badge' loading='lazy'>
@@ -27,7 +27,7 @@
                         <a href="{{ route('dashboard.editProfile') }}" target="_blank" class="themeBtn themeBtn--sm"><i class='bx bxs-edit-alt' ></i>Edit
                             Profile</a>
                     @endif
-                    <button id="download-pdf" data-doctor-name="{{ $user->full_name }}" class="themeBtn themeBtn--sm"
+                    <button id="download-pdf" data-doctor-name="{{ $user->title_full_name }}" class="themeBtn themeBtn--sm"
                         style="width:12rem;">
                         <div class="spinner-border d-none user-select-none" role="status"> </div>
                         <span class="btn-text user-select-none"><i class='bx bxs-download'></i>Download Profile</span>

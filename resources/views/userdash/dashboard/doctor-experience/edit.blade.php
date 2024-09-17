@@ -7,7 +7,7 @@
                 <div class="row align-items-center mb-5 pb-2">
                     <div class="col-lg-5 col-md-5 col-12">
                         <div class="primary-heading color-dark">
-                            <h2>Edit Training</h2>
+                            <h2>Edit my CME training</h2>
                         </div>
                     </div>
                 </div>
@@ -23,6 +23,24 @@
                                 @error('title')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="form-group">
+                                <label class="sub-heading">Select Speciality</label>
+                                <select name="speciality_area_id" required class="form-control">
+                                    <option value="" disabled selected>Select</option>
+                                    @foreach ($speciality_areas as $speciality)
+                                        <option value="{{ $speciality->id }}"
+                                            {{ old('speciality_area_id', $activity->speciality_area_id) == $speciality->id ? 'selected' : '' }}>
+                                            {{ $speciality->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('speciality_area_id'))
+                                    <span class="text-danger">{{ $errors->first('speciality_area_id') }}</span>
+                                @endif
                             </div>
                         </div>
 
@@ -287,6 +305,17 @@
 
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
+                                <label class="sub-heading">Endorser Email Address:</label>
+                                <input type="email" name="endorser_email" class="form-control"
+                                    value="{{ old('endorser_email', $activity->endorser_email) }}" required>
+                                @error('endorser_email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="form-group">
                                 <label class="sub-heading">Endorser City:</label>
                                 <input type="text" name="endorser_city" class="form-control"
                                     value="{{ old('endorser_city', $activity->endorser_city) }}" required>
@@ -307,20 +336,11 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-12 col-12">
-                            <div class="form-group">
-                                <label class="sub-heading">Endorser Email Address:</label>
-                                <input type="email" name="endorser_email" class="form-control"
-                                    value="{{ old('endorser_email', $activity->endorser_email) }}" required>
-                                @error('endorser_email')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+
 
                         <div class="col-lg-12 col-md-12 col-12 mt-4">
                             <div class="form-group">
-                                <button class="primary-btn center-btn primary-bg">Update</button>
+                                <button class="primary-btn center-btn primary-bg">Save Changes</button>
                             </div>
                         </div>
 

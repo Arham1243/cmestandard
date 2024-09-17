@@ -4,7 +4,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css");
 @import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;800;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
 
 /* RESET CSS START */
@@ -24,10 +24,12 @@ body {
 	--c1: #d0962a;
 	--c2: #fbf5ea;
 }
-
+*{
+	font-family: 'Rajdhani', sans-serif;
+}
 a,
 button {
-	font-family: 'Poppins', sans-serif;
+	
 	transition: all .5s ease-in-out;
 	text-decoration: none;
 	outline: none;
@@ -94,13 +96,13 @@ h6 {
 p,
 span,
 small {
-	font-family: 'Poppins', sans-serif;
+	
 	margin: 0;
 }
 
 input,
 select {
-	font-family: 'Poppins', sans-serif;
+	
 }
 
 ul,
@@ -112,7 +114,7 @@ ul.list-inline {
 li {
 	padding: 0;
 	list-style: none;
-	font-family: 'Poppins', sans-serif;
+	
 }
 
 /* RESET CSS END */
@@ -208,13 +210,13 @@ li {
 .primary-btn {
 	display: inline-block;
 	position: relative;
-	font-size: 14px;
-	font-weight: 500;
+	font-size: 17px;
+	font-weight: 600;
 	text-transform: uppercase;
-	padding: 10px 15px;
+	padding: 10px 20px;
 	text-align: center;
 	z-index: 1;
-	border-radius: 100px;
+	border-radius: 0.5rem;
 	border: 2px solid transparent;
 }
 
@@ -276,6 +278,7 @@ li {
 	font-size: 45px;
 	font-weight: 600;
 	line-height: 55px;
+	text-transform: capitalize;
 }
 
 .primary-heading h4 {
@@ -499,7 +502,7 @@ li {
 .mobile-menu .mobile-menu-body>.navigation-list>li>a,
 .mobile-menu .mobile-menu-body li.dropdown-li>ul.dropdown-list>li>a {
 	display: block;
-	font-family: 'Poppins', sans-serif;
+	
 	font-size: 13px;
 	font-weight: 500;
 	text-transform: capitalize;
@@ -663,7 +666,7 @@ li {
 }
 
 .main-slider .slider-caption h4 {
-	font-family: 'Poppins', sans-serif;
+	
 	font-size: 32px;
 	font-weight: 300;
 	color: #fff;
@@ -1047,7 +1050,7 @@ li {
 	font-size: 15px;
 	font-weight: 400;
 	color: #fff;
-	font-family: 'Poppins', sans-serif;
+	
 }
 
 .footer-info ul.footer-timing>li:not(:last-child) {
@@ -1187,8 +1190,8 @@ li {
 }
 
 .main-form .form-group>label {
-	font-size: 14px;
-	font-weight: 500;
+	font-size: 17px;
+	font-weight: 700;
 	color: #666;
 	margin-bottom: 5px;
 }
@@ -1206,26 +1209,28 @@ li {
 
 .main-form input, .main-form textarea, .main-form select, .select2-selection.select2-selection.select2-selection {
 	font-size: 14px;
-	font-weight: 400;
-	color: #222;
+	font-weight: 600;
+	color: #222222;
 	padding: 15px 20px;
 	background: #fff;
 	border-radius: 0;
-	border: 1px solid #dedede;
+	border: none;
 	background: #e9ecef !important;
+	height: 46px !important;
 }
-
+.main-form input[type=file] {
+    height: auto !important;
+}
 .main-form input:focus,
 .main-form textarea:focus,
 .main-form select:focus {
 	box-shadow: none;
 	outline: none;
-	border: 1px solid var(--c1)
+	border: navajowhite;
 }
 
 .main-form select {
-	padding: 0 20px;
-	height: 53px !important;
+	padding: 0 10px;
 	outline: none;
 }
 
@@ -1286,10 +1291,10 @@ li {
 
 .profile-img figure {
 	overflow: hidden;
-	border-radius: 50%;
-	border: 2px solid var(--c1);
+	border: 3px solid var(--c1);
 	width: 100%;
 	height: 100%;
+	border-radius: 0.5rem;
 }
 
 .profile-img figure>img {
@@ -1479,16 +1484,20 @@ li {
 .dashboard-sidebar .dashboard-sidebar-links>ul>li>a {
 	display: flex;
 	align-items: center;
-	padding: 20px;
-	font-size: 16px;
-	font-weight: 700;
+	padding: 17px 20px;
+	font-size: 18px;
+	font-weight: 600;
 	text-transform: capitalize;
 	color: #000;
+	gap: 0.85rem;
+	transition: all 0.3s;
+	border-left: 5px solid transparent;
 }
 
 .dashboard-sidebar .dashboard-sidebar-links>ul>li>a>figure {
-	display: block;
-	min-width: 40px;
+	font-size: 1.65rem;
+	color: var(--c1);
+	display: flex;
 }
 .dashboard-sidebar .dashboard-sidebar-links>ul>li.active>a, .dashboard-sidebar .dashboard-sidebar-links>ul>li>a:hover img {
 }
@@ -1500,9 +1509,9 @@ li {
 	object-fit: contain;
 }
 
-.dashboard-sidebar .dashboard-sidebar-links>ul>li.active>a,
-.dashboard-sidebar .dashboard-sidebar-links>ul>li>a:hover {
+.dashboard-sidebar .dashboard-sidebar-links>ul>li>a.active, .dashboard-sidebar .dashboard-sidebar-links>ul>li>a:hover {
 	background: var(--c2);
+	border-color: var(--c1);
 }
 
 .dashboard-sidebar .dashboard-sidebar-logo a {
@@ -1648,6 +1657,7 @@ li {
 .dashboard-table td {
 	border: none;
 	vertical-align: middle;
+	font-weight: 600;
 }
 
 .dashboard-table td:first-child {
@@ -2790,9 +2800,18 @@ a.ui-button:active {
 	width: 150px;
 	font-weight: 700;
 }
-
+.dropdown-menu {
+    padding: 0;
+}
 .dropdown a {
 	color: #000;
+	font-weight: 600;
+	padding: 0.75rem 1rem;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	line-height: 1;
 }
 
 .templates-card {
@@ -2854,4 +2873,8 @@ a.ui-button:active {
 	background: #fff;
 	object-position: top;
 	box-shadow: 0 0 15px 5px #00000020;
+}
+option {
+    color: #000;
+    font-weight: 500;
 }

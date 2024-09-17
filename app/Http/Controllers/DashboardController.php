@@ -49,8 +49,13 @@ class DashboardController extends Controller
     public function editprofile()
     {
         $user = User::where('id', Auth::id())->first();
-        $speciality_interests = Users_speciality_interests::where("is_active", 1)->get();
-        $speciality_areas = Users_speciality_areas::where("is_active", 1)->get();
+        $speciality_interests = Users_speciality_interests::where("is_active", 1)
+            ->orderBy('name', 'asc')
+            ->get();
+        $speciality_areas = Users_speciality_areas::where("is_active", 1)
+            ->orderBy('name', 'asc')
+            ->get();
+
         return view('userdash.dashboard.edit-profile')->with('title', 'Edit Profile')->with(compact('user', 'speciality_interests', 'speciality_areas'))
             ->with('myProfileMenu', true);
     }
@@ -61,11 +66,12 @@ class DashboardController extends Controller
 
         $user = User::where('id', Auth::id())->update([
             'qualification' => $request['qualification'],
+            'academic_title' => $request['academic_title'],
             'institution_name' => $request['institution_name'],
+            'phone_show_on_profile' => isset($request['phone_show_on_profile']) ? $request['phone_show_on_profile'] : 0,
             'institution_city' => $request['institution_city'],
             'birthday' => $request['birthday'],
             'full_name' => $request->full_name,
-            'phone' => $request->phone,
             'address' => $request->address,
             'city' => $request->city,
             'country' => $request->country,
@@ -112,19 +118,24 @@ class DashboardController extends Controller
         $user = User::where('id', Auth::id())->first();
         $user->password = bcrypt($request['password']);
         $user->save();
-        return redirect()->route('dashboard.passwordChange')->with('notify_success', 'Password Updated!');
+        return redirect()->route('dashboard.editProfile')->with('notify_success', 'Password Updated Successfully!');
     }
 
     public function activity_listing()
     {
-        $doctors_experience = Doctor_activity::where("user_id", Auth::user()->id)->get();
-        return view('userdash.dashboard.doctor-experience.list')->with('title', ' My Trainings')->with(compact('doctors_experience'));
+        $doctors_experience = Doctor_activity::where("user_id", Auth::user()->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $categories = Activity_categories::where("is_active", 1)->get();
+        return view('userdash.dashboard.doctor-experience.list')->with('title', ' My CME Trainings')->with(compact('doctors_experience', 'categories'));
     }
 
     public function add_activity()
     {
         $categories = Activity_categories::where("is_active", 1)->get();
-        return view('userdash.dashboard.doctor-experience.add')->with('title', 'Add Training')->with(compact('categories'));
+        $speciality_areas = Users_speciality_areas::where("is_active", 1)->get();
+        return view('userdash.dashboard.doctor-experience.add')->with('title', 'Add My CME Training')->with(compact('categories', 'speciality_areas'));
     }
 
 
@@ -134,6 +145,7 @@ class DashboardController extends Controller
         $validatedData = $request->validate([
             'title' => 'nullable|string|max:255',
             'category_id' => 'nullable|integer',
+            'speciality_area_id' => 'nullable',
             'provider' => 'nullable|string|max:255',
             'format' => 'nullable|string|max:255',
             'type' => 'nullable|string|max:255',
@@ -201,7 +213,7 @@ class DashboardController extends Controller
             Mail::send('email.endorser-approval', $data, function ($message) use ($activity) {
                 $message->from(env('MAIL_FROM_ADDRESS'));
                 $message->to($activity->endorser_email);
-                $message->subject('Training Approval Request');
+                $message->subject('CME Attendance Confirmation');
             });
         } catch (\Exception $e) {
             // If email fails, dump the error
@@ -209,7 +221,7 @@ class DashboardController extends Controller
         }
 
 
-        return redirect()->route('dashboard.activity_listing')->with('notify_success', 'Training Added Successfully!!');
+        return redirect()->route('dashboard.activity_listing')->with('notify_success', 'CME Training Added Successfully!!');
     }
 
 
@@ -245,8 +257,9 @@ class DashboardController extends Controller
     public function edit_activity($id)
     {
         $categories = Activity_categories::where("is_active", 1)->get();
+        $speciality_areas = Users_speciality_areas::where("is_active", 1)->get();
         $activity = Doctor_activity::where('id', $id)->first();
-        return view('userdash.dashboard.doctor-experience.edit')->with('title', 'Edit Training')->with(compact('activity', 'categories'));
+        return view('userdash.dashboard.doctor-experience.edit')->with('title', 'Edit My CME Training')->with(compact('activity', 'categories', 'speciality_areas'));
     }
     public function update_activity(Request $request, $id)
     {
@@ -254,6 +267,7 @@ class DashboardController extends Controller
         $validatedData = $request->validate([
             'title' => 'nullable|string|max:255',
             'category_id' => 'nullable|integer',
+            'speciality_area_id' => 'nullable',
             'provider' => 'nullable|string|max:255',
             'format' => 'nullable|string|max:255',
             'type' => 'nullable|string|max:255',

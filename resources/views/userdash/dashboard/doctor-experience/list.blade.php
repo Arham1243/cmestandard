@@ -7,19 +7,31 @@
                 <div class="row align-items-center mc-b-3">
                     <div class="col-lg-5 col-md-5 col-12">
                         <div class="primary-heading color-dark">
-                            <h2>My Trainings</h2>
+                            <h2>My CME Trainings</h2>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-12">
                         <div class="text-md-right d-flex justify-content-end">
                             <a href="{{ route('dashboard.add_activity') }}" class="primary-btn primary-bg mc-r-2"><i
                                     class="fa fa-user"></i> Add new</a>
-                            <a href="{{ route('doctor_profile', Auth::user()->slug) }}"
-                                class="primary-btn primary-bg mc-r-2" target="_blank"><i class="fa fa-eye"></i> View my
-                                profile</a>
                         </div>
                     </div>
                 </div>
+                {{-- <div class="row">
+                    <div class="col-md-4">
+                        <form class="main-form">
+                            <select name="category_id" class="form-control">
+                                <option value="" disabled selected>Select</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category['id'] }}"
+                                        {{ old('category_id') == $category['id'] ? 'selected' : '' }}>
+                                        {{ $category['name'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
+                    </div>
+                </div> --}}
                 <div class="table-responsive-sm dashboard-table">
                     <table class="table" id="data-table">
                         <thead>

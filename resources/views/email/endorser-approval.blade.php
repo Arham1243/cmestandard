@@ -3,8 +3,8 @@
 
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <title>Training Approval Request</title>
-    <meta name="description" content="Training Approval Request">
+    <title>CME Attendance Confirmation</title>
+    <meta name="description" content="CME Attendance Confirmation">
     <style>
         a:hover {
             text-decoration: underline !important;
@@ -70,7 +70,7 @@
                                     <td style="padding:0 15px; text-align:center;">
                                         <h1
                                             style="color:#1e1e2d; font-weight:400; margin:0;font-size:32px;font-family:'Rubik',sans-serif; margin-bottom: 0.75rem;">
-                                            Training Approval Request
+                                            CME Attendance Confirmation
                                         </h1>
 
                                         <span
@@ -201,7 +201,7 @@
                                     <td style="padding: 20px 15px; text-align:center;">
                                         <a href="{{ route('change_training_status', ['id' => $training->id, 'status' => 'endorser_approved']) }}"
                                             style="display:inline-block; background-color:#D0962A; color:#ffffff; padding:10px 20px; text-decoration:none; font-family:'Rubik',sans-serif; font-size:16px; border-radius:5px;">
-                                            Approve Training
+                                            CME Attendance Confirmation
                                         </a>
                                     </td>
                                 </tr>

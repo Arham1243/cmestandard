@@ -78,8 +78,12 @@ class IndexController extends Controller
 
     public function sign_up()
     {
-        $speciality_interests = Users_speciality_interests::where("is_active", 1)->get();
-        $speciality_areas = Users_speciality_areas::where("is_active", 1)->get();
+        $speciality_interests = Users_speciality_interests::where("is_active", 1)
+            ->orderBy('name', 'asc')
+            ->get();
+        $speciality_areas = Users_speciality_areas::where("is_active", 1)
+            ->orderBy('name', 'asc')
+            ->get();
 
         $data = compact('speciality_interests', 'speciality_areas');
         return view('sign-up')->with('title', 'Sign Up')->with($data);
@@ -191,41 +195,41 @@ class IndexController extends Controller
     }
 
 
-   public function doctor_profile_download_pdf(Request $request)
-{
-    if ($request->hasFile('screenshot')) {
-        $screenshot = $request->file('screenshot');
-        
+    public function doctor_profile_download_pdf(Request $request)
+    {
+        if ($request->hasFile('screenshot')) {
+            $screenshot = $request->file('screenshot');
 
-        $imageData = file_get_contents($screenshot->getRealPath());
-        $imageMimeType = $screenshot->getClientMimeType(); // e.g., image/png
 
-        // Encode the image data to Base64
-        $base64Image = base64_encode($imageData);
+            $imageData = file_get_contents($screenshot->getRealPath());
+            $imageMimeType = $screenshot->getClientMimeType(); // e.g., image/png
 
-        // Create the Data URL
-        $dataUrl = 'data:' . $imageMimeType . ';base64,' . $base64Image;
+            // Encode the image data to Base64
+            $base64Image = base64_encode($imageData);
 
-        // Get the doctor's name from the request
-        $doctorName = $request->input('doctor_name', 'doctor-profile');
+            // Create the Data URL
+            $dataUrl = 'data:' . $imageMimeType . ';base64,' . $base64Image;
 
-        // Generate the PDF
-        $dompdf = new Dompdf();
-        $html = '<html><body style="margin:0; padding:0; height:100vh; width:100vw;">';
-        $html .= '<img src="' . $dataUrl . '" style="width:100%; object-fit: contain; display:block;" />';
-        $html .= '</body></html>';
+            // Get the doctor's name from the request
+            $doctorName = $request->input('doctor_name', 'doctor-profile');
 
-        // Load HTML content into Dompdf
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
+            // Generate the PDF
+            $dompdf = new Dompdf();
+            $html = '<html><body style="margin:0; padding:0; height:100vh; width:100vw;">';
+            $html .= '<img src="' . $dataUrl . '" style="width:100%; object-fit: contain; display:block;" />';
+            $html .= '</body></html>';
 
-        // Stream the PDF to the browser with a dynamic filename
-        return $dompdf->stream($doctorName . '.pdf', ['Attachment' => false]);
-    } else {
-        return response()->json(['error' => 'No screenshot uploaded'], 400);
+            // Load HTML content into Dompdf
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+
+            // Stream the PDF to the browser with a dynamic filename
+            return $dompdf->stream($doctorName . '.pdf', ['Attachment' => false]);
+        } else {
+            return response()->json(['error' => 'No screenshot uploaded'], 400);
+        }
     }
-}
 
     // -----------All View Pages-------------
 

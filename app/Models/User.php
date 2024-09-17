@@ -78,6 +78,10 @@ class User extends Authenticatable
     {
         return $this->determineBadgeId();
     }
+    public function gettitleFullNameAttribute()
+    {
+        return $this->academic_title . ' ' . $this->full_name;
+    }
 
     // Define the relationship to the Badge model
     public function badge()
