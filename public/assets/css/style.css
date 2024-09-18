@@ -2380,7 +2380,7 @@ li.page-item.active span.page-link {
 
 .placeholder-user__img {
     aspect-ratio: 1 / 1;
-    border-radius: 0.75rem;
+    border-radius: 100%;
     cursor: pointer;
     width: 150px;
     overflow: hidden;
