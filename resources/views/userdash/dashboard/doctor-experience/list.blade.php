@@ -16,24 +16,58 @@
                                     class="fa fa-user"></i> Add new</a>
                         </div>
                     </div>
+
+
                 </div>
-                {{-- <div class="row">
-                    <div class="col-md-4">
-                        <form class="main-form">
-                            <select name="category_id" class="form-control">
-                                <option value="" disabled selected>Select</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category['id'] }}"
-                                        {{ old('category_id') == $category['id'] ? 'selected' : '' }}>
-                                        {{ $category['name'] }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </form>
+
+                <div class="main-form">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="sub-heading"> Search:</label>
+                                <input type="text" class="form-control" id="customSearch">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="sub-heading">Select Speciality</label>
+                                            <select name="speciality_area_id" required class="form-control">
+                                                <option value="" disabled selected>Select</option>
+                                                @foreach ($speciality_areas as $speciality)
+                                                    <option value="{{ $speciality->id }}"
+                                                        {{ old('speciality_area_id') == $speciality->id ? 'selected' : '' }}>
+                                                        {{ $speciality->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="sub-heading"> Category:</label>
+                                            <select name="category_id" class="form-control" required>
+                                                <option value="" disabled selected>Select</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category['id'] }}"
+                                                        {{ old('category_id') == $category['id'] ? 'selected' : '' }}>
+                                                        {{ $category['name'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div> --}}
+                </div>
+
+
                 <div class="table-responsive-sm dashboard-table">
-                    <table class="table" id="data-table">
+                    <table class="table" id="custom-table">
                         <thead>
                             <tr>
                                 <th>CME ID</th>
@@ -92,6 +126,10 @@
             background: #212529 !important;
             color: #f8f9fa !important;
         }
+
+        .dataTables_filter {
+            display: none;
+        }
     </style>
 @endsection
 @section('js')
@@ -101,5 +139,11 @@
         //         order: [[0, 'desc']],
         //     });
         // });
+
+        var table = $('#custom-table').DataTable();
+
+        document.getElementById('customSearch').addEventListener('keyup', function() {
+            table.search(this.value).draw();
+        });
     </script>
 @endsection

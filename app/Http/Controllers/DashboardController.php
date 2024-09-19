@@ -128,7 +128,8 @@ class DashboardController extends Controller
             ->get();
 
         $categories = Activity_categories::where("is_active", 1)->get();
-        return view('userdash.dashboard.doctor-experience.list')->with('title', ' My CME Trainings')->with(compact('doctors_experience', 'categories'));
+        $speciality_areas = Users_speciality_areas::where("is_active", 1)->get();
+        return view('userdash.dashboard.doctor-experience.list')->with('title', ' My CME Trainings')->with(compact('doctors_experience', 'categories', 'speciality_areas'));
     }
 
     public function add_activity()
