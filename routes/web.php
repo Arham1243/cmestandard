@@ -478,6 +478,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
   
   Route::get('/delete-activity/{id}', [DashboardController::class, 'delete_activity'])->name('delete_activity');
   // ---------------------------------------Doctor_experience Management---------------------------------------
-
+  
+  Route::get('/analytics', [DashboardController::class, 'analytics'])->name('analytics');
 });
 // ---------------------------------------User Dash---------------------------------------

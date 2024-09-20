@@ -12,8 +12,8 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-12">
                         <div class="text-md-right d-flex justify-content-end">
-                            <a href="{{ route('dashboard.add_activity') }}" class="primary-btn primary-bg mc-r-2"><i
-                                    class="fa fa-user"></i> Add new</a>
+                            <a href="{{ route('dashboard.add_activity') }}" class="primary-btn primary-bg"><i
+                                    class='bx bx-plus'></i> Add new</a>
                         </div>
                     </div>
 
@@ -22,23 +22,35 @@
 
                 <div class="main-form">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="sub-heading"> Search:</label>
                                 <input type="text" class="form-control" id="customSearch">
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <form>
-                                <div class="row">
+                        <div class="col-lg-8">
+                            <form id="filterForm" action="{{ route('dashboard.activity_listing') }}" method="GET">
+                                @php
+                                    $speciality_param = $_GET['speciality_area_id'] ?? null;
+                                    $category_param = $_GET['category_id'] ?? null;
+                                @endphp
+                                <div class="row align-items-center">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="sub-heading">Select Speciality</label>
-                                            <select name="speciality_area_id" required class="form-control">
-                                                <option value="" disabled selected>Select</option>
+                                            <label class="sub-heading d-flex align-items-center justify-content-between">
+                                                Select Speciality
+                                                @if (!is_null($speciality_param))
+                                                    <a href="javascript:void(0)" class="cross" id="clearSpeciality">
+                                                        <i class='bx bx-x'></i>
+                                                    </a>
+                                                @endif
+                                            </label>
+                                            <select id="speciality" name="speciality_area_id" class="form-control" required>
+                                                <option value="" disabled
+                                                    {{ is_null($speciality_param) ? 'selected' : '' }}>Select</option>
                                                 @foreach ($speciality_areas as $speciality)
                                                     <option value="{{ $speciality->id }}"
-                                                        {{ old('speciality_area_id') == $speciality->id ? 'selected' : '' }}>
+                                                        {{ $speciality_param == $speciality->id ? 'selected' : '' }}>
                                                         {{ $speciality->name }}
                                                     </option>
                                                 @endforeach
@@ -47,12 +59,20 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="sub-heading"> Category:</label>
-                                            <select name="category_id" class="form-control" required>
-                                                <option value="" disabled selected>Select</option>
+                                            <label class="sub-heading d-flex align-items-center justify-content-between">
+                                                Category
+                                                @if (!is_null($category_param))
+                                                    <a href="javascript:void(0)" class="cross" id="clearCategory">
+                                                        <i class='bx bx-x'></i>
+                                                    </a>
+                                                @endif
+                                            </label>
+                                            <select id="category" name="category_id" class="form-control" required>
+                                                <option value="" disabled
+                                                    {{ is_null($category_param) ? 'selected' : '' }}>Select</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category['id'] }}"
-                                                        {{ old('category_id') == $category['id'] ? 'selected' : '' }}>
+                                                        {{ $category_param == $category['id'] ? 'selected' : '' }}>
                                                         {{ $category['name'] }}
                                                     </option>
                                                 @endforeach
@@ -130,20 +150,72 @@
         .dataTables_filter {
             display: none;
         }
+
+        .primary-btn {
+            display: flex;
+            justify-content: center;
+            width: fit-content;
+        }
+
+        .cross {
+            font-size: 1.25rem;
+            color: red;
+            width: 20px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100px;
+        }
+
+        .cross:hover {
+            background: #0000000f;
+            color: red;
+        }
     </style>
 @endsection
 @section('js')
     <script type="text/javascript">
         // $(document).ready(function() {
-        //     $('#data-table').DataTable({
-        //         order: [[0, 'desc']],
+        //     $('#custom-table').DataTable({
+        //         order: [
+        //             [0, 'asc']
+        //         ],
         //     });
         // });
 
-        var table = $('#custom-table').DataTable();
+
+        var table = $('#custom-table').DataTable({
+            order: [
+                [0, 'desc']
+            ]
+        });
 
         document.getElementById('customSearch').addEventListener('keyup', function() {
             table.search(this.value).draw();
+        });
+
+        // Submit form when changing speciality or category
+        document.getElementById('category').addEventListener('change', function() {
+            document.getElementById('filterForm').submit();
+        });
+
+        document.getElementById('speciality').addEventListener('change', function() {
+            document.getElementById('filterForm').submit();
+        });
+
+        // Clear speciality and keep category
+        document.getElementById('clearSpeciality')?.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor behavior
+            document.getElementById('speciality').value = ''; // Clear the speciality field
+            document.getElementById('filterForm').submit(); // Submit form
+        });
+
+        // Clear category and keep speciality
+        document.getElementById('clearCategory')?.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor behavior
+            document.getElementById('category').value = ''; // Clear the category field
+            document.getElementById('filterForm').submit(); // Submit form
         });
     </script>
 @endsection

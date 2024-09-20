@@ -2878,3 +2878,14 @@ option {
     color: #000;
     font-weight: 500;
 }
+.primary-btn>i.bx {
+    font-size: 1.45rem;
+}
+
+.chart-title {
+	opacity: 0.85;
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 55px;
+	text-transform: capitalize;
+}

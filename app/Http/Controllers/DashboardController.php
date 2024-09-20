@@ -121,16 +121,28 @@ class DashboardController extends Controller
         return redirect()->route('dashboard.editProfile')->with('notify_success', 'Password Updated Successfully!');
     }
 
-    public function activity_listing()
+    public function activity_listing(Request $request)
     {
-        $doctors_experience = Doctor_activity::where("user_id", Auth::user()->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $query = Doctor_activity::where("user_id", Auth::user()->id);
+
+        if ($request->has('category_id') && $request->category_id) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        if ($request->has('speciality_area_id') && $request->speciality_area_id) {
+            $query->where('speciality_area_id', $request->speciality_area_id);
+        }
+
+        $doctors_experience = $query->get();
 
         $categories = Activity_categories::where("is_active", 1)->get();
         $speciality_areas = Users_speciality_areas::where("is_active", 1)->get();
-        return view('userdash.dashboard.doctor-experience.list')->with('title', ' My CME Trainings')->with(compact('doctors_experience', 'categories', 'speciality_areas'));
+
+        return view('userdash.dashboard.doctor-experience.list')
+            ->with('title', ' My CME Trainings')
+            ->with(compact('doctors_experience', 'categories', 'speciality_areas'));
     }
+
 
     public function add_activity()
     {
@@ -322,5 +334,11 @@ class DashboardController extends Controller
         $doctors_experience = Doctor_activity::where('id', $id)->delete();
         // $this->updateCreditHours();
         return redirect()->route('dashboard.activity_listing')->with('notify_success', 'Training Deleted Successfuly!!');
+    }
+
+
+    public function analytics()
+    {
+        return view('userdash.dashboard.analytics.charts')->with('title', 'Analytics');
     }
 }
