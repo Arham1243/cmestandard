@@ -339,6 +339,122 @@ class DashboardController extends Controller
 
     public function analytics()
     {
-        return view('userdash.dashboard.analytics.charts')->with('title', 'Analytics');
+        // Specialty data
+        $specialtyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('speciality_area_id')
+            ->with(['speciality' => function ($query) {
+                $query->whereNotNull('name');
+            }])
+            ->get()
+            ->groupBy('speciality_area_id')
+            ->map(function ($group) {
+                if ($group->first()->speciality) {
+                    return [
+                        'speciality_name' => $group->first()->speciality->name,
+                        'total_trainings' => $group->count(),
+                    ];
+                }
+            })->filter();
+
+        // Category data
+        $categoryTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('category_id')
+            ->with(['category' => function ($query) {
+                $query->whereNotNull('name');
+            }])
+            ->get()
+            ->groupBy('category_id')
+            ->map(function ($group) {
+                if ($group->first()->category) {
+                    return [
+                        'category_name' => $group->first()->category->name,
+                        'total_trainings' => $group->count(),
+                    ];
+                }
+            })->filter();
+
+        // Format data
+        $formatTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('format')
+            ->get()
+            ->groupBy('format')
+            ->map(function ($group) {
+                return [
+                    'format_name' => $group->first()->format,
+                    'total_trainings' => $group->count(),
+                ];
+            })->filter();
+
+        // Type data
+        $typeTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('type')
+            ->get()
+            ->groupBy('type')
+            ->map(function ($group) {
+                return [
+                    'type_name' => $group->first()->type,
+                    'total_trainings' => $group->count(),
+                ];
+            })->filter();
+
+        // Content data
+        $contentTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('content')
+            ->get()
+            ->groupBy('content')
+            ->map(function ($group) {
+                return [
+                    'content_name' => $group->first()->content,
+                    'total_trainings' => $group->count(),
+                ];
+            })->filter();
+
+        // Status data
+        $statusTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('status')
+            ->get()
+            ->groupBy('status')
+            ->map(function ($group) {
+                return [
+                    'status_name' => $group->first()->status,
+                    'total_trainings' => $group->count(),
+                ];
+            })->filter();
+
+        // Credit Tours data
+        $creditToursTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('credit_hours')
+            ->get()
+            ->groupBy('credit_hours')
+            ->map(function ($group) {
+                return [
+                    'credit_hours' => $group->first()->credit_hours,
+                    'total_trainings' => $group->count(),
+                ];
+            })->filter();
+
+        // Duration data
+        $durationTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereNotNull('duration')
+            ->get()
+            ->groupBy('duration')
+            ->map(function ($group) {
+                return [
+                    'duration' => $group->first()->duration,
+                    'total_trainings' => $group->count(),
+                ];
+            })->filter();
+
+        return view('userdash.dashboard.analytics.charts', [
+            'title' => 'Analytics',
+            'specialtyTrainings' => $specialtyTrainings,
+            'categoryTrainings' => $categoryTrainings,
+            'formatTrainings' => $formatTrainings,
+            'typeTrainings' => $typeTrainings,
+            'contentTrainings' => $contentTrainings,
+            'statusTrainings' => $statusTrainings,
+            'creditToursTrainings' => $creditToursTrainings,
+            'durationTrainings' => $durationTrainings,
+        ]);
     }
 }

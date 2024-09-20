@@ -22,4 +22,8 @@ class Doctor_activity extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function speciality()
+    {
+        return $this->belongsTo(Users_speciality_areas::class, 'speciality_area_id');
+    }
 }

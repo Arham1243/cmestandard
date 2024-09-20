@@ -250,7 +250,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-12">
+                        <div class="col-lg-12 col-md-12 col-12">
                             <div class="form-group">
                                 <label class="sub-heading">Credit Hours:</label>
                                 <input type="number" name="credit_hours" class="form-control"
