@@ -94,6 +94,7 @@ class DashboardController extends Controller
             'academic_title' => $request['academic_title'],
             'institution_name' => $request['institution_name'],
             'phone_show_on_profile' => isset($request['phone_show_on_profile']) ? $request['phone_show_on_profile'] : 0,
+            'email_show_on_profile' => isset($request['email_show_on_profile']) ? $request['email_show_on_profile'] : 0,
             'institution_city' => $request['institution_city'],
             'birthday' => $request['birthday'],
             'full_name' => $request->full_name,
@@ -366,6 +367,7 @@ class DashboardController extends Controller
     {
         // Specialty data
         $specialtyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('speciality_area_id')
             ->with(['speciality' => function ($query) {
                 $query->whereNotNull('name');
@@ -383,6 +385,7 @@ class DashboardController extends Controller
 
         // Category data
         $categoryTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('category_id')
             ->with(['category' => function ($query) {
                 $query->whereNotNull('name');
@@ -400,6 +403,7 @@ class DashboardController extends Controller
 
         // Format data
         $formatTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('format')
             ->get()
             ->groupBy('format')
@@ -412,6 +416,7 @@ class DashboardController extends Controller
 
         // Type data
         $typeTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('type')
             ->get()
             ->groupBy('type')
@@ -424,6 +429,7 @@ class DashboardController extends Controller
 
         // Content data
         $contentTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('content')
             ->get()
             ->groupBy('content')
@@ -436,6 +442,7 @@ class DashboardController extends Controller
 
         // Status data
         $statusTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('status')
             ->get()
             ->groupBy('status')
@@ -447,6 +454,7 @@ class DashboardController extends Controller
             })->filter();
 
         $creditHoursTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('credit_hours')
             ->get()
             ->map(function ($activity) {
@@ -459,6 +467,7 @@ class DashboardController extends Controller
 
         // Fetch user's trainings grouped by duration
         $durationTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereNotNull('duration')
             ->get()
             ->groupBy('duration')
@@ -481,6 +490,7 @@ class DashboardController extends Controller
 
         // Fetch activities for the current user, grouped by month for the current year
         $monthlyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereYear('created_at', $currentYear)
             ->selectRaw('MONTH(created_at) as month, COUNT(*) as total_trainings')
             ->groupBy('month')
@@ -511,6 +521,7 @@ class DashboardController extends Controller
 
         // Fetch activities for the current user, grouped by year
         $yearlyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->selectRaw('YEAR(created_at) as year, COUNT(*) as total_trainings')
             ->groupBy('year')
             ->orderBy('year', 'asc')
@@ -530,6 +541,7 @@ class DashboardController extends Controller
 
         // Fetch training counts by month
         $monthlyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereIn("training_status", ['endorser_approved', 'admin_approved'])
             ->whereYear('created_at', $currentYear)
             ->selectRaw('MONTH(created_at) as month, COUNT(*) as total_trainings')
             ->groupBy('month')

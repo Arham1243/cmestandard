@@ -21,12 +21,12 @@
 
                         </div>
                     </div>
-
-                    <div class="doc-profile__bio">
-                        <h4 class="doc-profile__heading"> biography</h4>
-                        <p class="doc-profile__pra">{{ $user->bio ?? 'N/A' }}</p>
-
-                    </div>
+                    @if ($user->bio)
+                        <div class="doc-profile__bio">
+                            <h4 class="doc-profile__heading"> biography</h4>
+                            <p class="doc-profile__pra">{{ $user->bio }}</p>
+                        </div>
+                    @endif
 
                 </div>
                 <div class="col-md-6">
@@ -94,24 +94,25 @@
                             </div>
 
                         </div>
-                        <div class="doc-contact__content">
-                            <div class="doc-profile__heading">CONTACT</div>
-                            <div class="doc-contact__item">
-                                <div class="doc-contact__info">
-                                    {{ $user->email }} <br>
-                                </div>
-                            </div>
-                            @if ($user->phone_show_on_profile == '1')
-                                <div class="doc-contact__item">
-                                    <div class="doc-contact__info">
-                                        {{ $user->phone }} <br>
+                        @if ($user->email_show_on_profile == '1' || $user->phone_show_on_profile == '1')
+                            <div class="doc-contact__content">
+                                <div class="doc-profile__heading">CONTACT</div>
+                                @if ($user->email_show_on_profile == '1')
+                                    <div class="doc-contact__item">
+                                        <div class="doc-contact__info">
+                                            {{ $user->email }} <br>
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
-
-                        </div>
-
-
+                                @endif
+                                @if ($user->phone_show_on_profile == '1')
+                                    <div class="doc-contact__item">
+                                        <div class="doc-contact__info">
+                                            {{ $user->phone }} <br>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

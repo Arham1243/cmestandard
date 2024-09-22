@@ -42,7 +42,7 @@
                         </div>
 
 
-                        <div class="col-lg-6 col-md-6 col-12">
+                        <div class="col-lg-12 col-md-12 col-12">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -50,7 +50,7 @@
                                         @php
                                             $academic_titles = ['Dr.', 'Prof.', 'Asst. Prof.', 'Asoc. Prof.'];
                                         @endphp
-                                        <select name="academic_title" required class="form-control text-uppercase">
+                                        <select name="academic_title" required class="form-control">
                                             <option value="" disabled selected>Select</option>
                                             @foreach ($academic_titles as $academic_title)
                                                 <option value="{{ $academic_title }}"
@@ -79,6 +79,20 @@
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12">
+                            <div class="form-group cursor-not-allowed">
+                                <label><i class="fa fa-envelope"></i> Email</label>
+                                <input type="email" class="form-control" value="{{ $user->email }}" readonly>
+                                <div class="form-check mt-2 text-right">
+                                    <input class="form-check-input" name="email_show_on_profile" type="checkbox"
+                                        value="1" id="showOnProfileEmail"
+                                        {{ $user->email_show_on_profile == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label text-" for="showOnProfileEmail">
+                                        Show on profile
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <label><i class="fa fa-phone"></i> Phone </label>
                                 <input type="tel" name="phone" class="form-control" value="{{ $user->phone }}">
@@ -87,7 +101,7 @@
                                         name="phone_show_on_profile"
                                         {{ $user->phone_show_on_profile == '1' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="showOnProfile">
-                                        Show On Profile
+                                        Show on profile
                                     </label>
                                 </div>
                                 @if ($errors->has('phone'))
@@ -210,8 +224,7 @@
                         <div class="col-lg-12 col-md-12 col-12">
                             <div class="form-group">
                                 <label><i class="fa fa-pencil"></i> Bio <span>*</span></label>
-                                <input type="text" name="bio" required class="form-control"
-                                    value="{{ $user->bio }}">
+                                <textarea rows="6" name="bio" required class="form-control">{{ $user->bio }}</textarea>
                                 @if ($errors->has('bio'))
                                     <span class="text-danger">{{ $errors->first('bio') }}</span>
                                 @endif
@@ -240,7 +253,7 @@
                             </div>
                         </div> --}}
 
-                        <div class="col-lg-12 col-md-12 col-12">
+                        {{-- <div class="col-lg-12 col-md-12 col-12">
                             <div class="form-group">
                                 <label><i class="fa fa-pencil"></i> Long Description <span>*</span></label>
                                 <textarea name="long_desc" rows="6" required class="form-control">{{ $user->long_desc }}</textarea>
@@ -248,7 +261,7 @@
                                     <span class="text-danger">{{ $errors->first('long_desc') }}</span>
                                 @endif
                             </div>
-                        </div>
+                        </div> --}}
 
 
 
@@ -422,7 +435,7 @@
         .form-check label {
             line-height: 1;
             display: block;
-            margin-top: 0.2rem;
+            margin-top: 0.45rem;
             user-select: none;
             cursor: pointer;
         }

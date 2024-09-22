@@ -26,7 +26,7 @@
              <li><a href="{{ route('dashboard.analytics') }}"
                      class="{{ Request::url() == route('dashboard.analytics') ? 'active' : '' }}">
                      <figure class="mb-0"><i class='bx bx-bar-chart-alt'></i></figure>
-                     <span>Analytics</span>
+                     <span> My Analytics</span>
                  </a></li>
 
 

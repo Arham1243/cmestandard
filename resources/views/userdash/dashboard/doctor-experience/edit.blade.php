@@ -28,7 +28,7 @@
 
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
-                                <label class="sub-heading">Select Speciality</label>
+                                <label class="sub-heading">Select Speciality:</label>
                                 <select name="speciality_area_id" required class="form-control">
                                     <option value="" disabled selected>Select</option>
                                     @foreach ($speciality_areas as $speciality)
@@ -98,8 +98,7 @@
 
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
-                                <label class="sub-heading"> Type
-                                    :</label>
+                                <label class="sub-heading"> Type:</label>
                                 <select name="type" required class="form-control">
                                     <option value="" disabled selected>Select</option>
                                     @php
@@ -165,7 +164,8 @@
 
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
-                                <label class="sub-heading">Location (if case of Live in-person):</label>
+                                <label class="sub-heading" style="text-transform: inherit !important"> Location (in case of
+                                    live in-person):</label>
                                 <input type="text" name="in_person_location" class="form-control"
                                     value="{{ old('in_person_location', $activity->in_person_location) }}">
                                 @error('in_person_location')
