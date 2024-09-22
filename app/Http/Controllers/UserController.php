@@ -73,7 +73,7 @@ class UserController extends Controller
             'institution_name' => 'required',
             'institution_city' => 'required',
             'birthday' => 'required|date',
-            'profile_img' => 'required',
+            'profile_img' => 'required|image',
             'country_id_num' => 'required',
             'country' => 'required',
             'medical_license_number' => 'required',

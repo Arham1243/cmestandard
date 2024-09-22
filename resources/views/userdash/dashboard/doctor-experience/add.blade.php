@@ -127,28 +127,7 @@
                                     :</label>
                                 <select name="duration" required class="form-control">
                                     <option value="" disabled selected>Select</option>
-                                    @php
-                                        $durations = [
-                                            'Half Day',
-                                            '1 Day',
-                                            '2 Days',
-                                            '3 Days',
-                                            '4 Days',
-                                            '5 Days',
-                                            '6 Days',
-                                            'upto',
-                                            '21 Days',
-                                            '1 Month',
-                                            '2 Months',
-                                            '3 Months',
-                                            '4 Months',
-                                            '5 Months',
-                                            '6 Months',
-                                            '9 Months',
-                                            '1 Year',
-                                            'Other',
-                                        ];
-                                    @endphp
+                                    
                                     @foreach ($durations as $duration)
                                         <option value="{{ $duration }}"
                                             {{ old('duration') == $duration ? 'selected' : '' }}>

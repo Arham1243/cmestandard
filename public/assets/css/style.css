@@ -1459,12 +1459,13 @@ body .contact-heading * {
 }
 
 .auth__form .inputField .icon {
-    color: #717171;
-    font-size: 1.25rem;
     position: absolute;
     right: 15px;
-    top: 70%;
+    top: 50%;
     transform: translateY(-50%);
+    line-height: 1;
+    color: #717171;
+    font-size: 1.25rem;
 }
 
 .auth__form .inputField .title {

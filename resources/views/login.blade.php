@@ -33,10 +33,12 @@
                                     <div class="col-12">
                                         <div class="inputField">
                                             <label class="title">Email</label>
-                                            <input type="email" placeholder="Enter Email :" name="email" required
-                                                value="{{ old('email') }}">
+                                            <div class="position-relative">
+                                                <input type="email" placeholder="Enter Email :" name="email" required
+                                                    value="{{ old('email') }}">
 
-                                            <span class="icon"><i class='bx bxs-envelope'></i></span>
+                                                <span class="icon"><i class='bx bxs-envelope'></i></span>
+                                            </div>
                                         </div>
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
@@ -45,12 +47,14 @@
                                     <div class="col-12">
                                         <div class="inputField">
                                             <label class="title">Password</label>
-                                            <input type="password" placeholder="Enter Password :" class="passwordInput"
-                                                id="passwordInput" name="password" required>
+                                            <div class="position-relative">
+                                                <input type="password" placeholder="Enter Password :" class="passwordInput"
+                                                    id="passwordInput" name="password" required>
 
-                                            <span class="icon showPassword" onclick="showHide()">
-                                                <i class='bx bxs-show' id="toggleIcon"></i>
-                                            </span>
+                                                <span class="icon showPassword" onclick="showHide()">
+                                                    <i class='bx bxs-show' id="toggleIcon"></i>
+                                                </span>
+                                            </div>
                                         </div>
                                         @error('password')
                                             <div class="text-danger">{{ $message }}</div>

@@ -11,6 +11,7 @@ use App\Models\Users_speciality_interests;
 use App\Models\Users_speciality_areas;
 use App\Models\Badges;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,13 +20,37 @@ class DashboardController extends Controller
 {
 
     public $logo;
+    public $durations;
     public function __construct()
     {
         $this->middleware('auth');
         $logo = imagetable::where('table_name', 'logo')->latest()->first();
+        $durations = [
+            'Half Day',
+            '1 Day',
+            '2 Days',
+            '3 Days',
+            '4 Days',
+            '5 Days',
+            '6 Days',
+            'upto',
+            '21 Days',
+            '1 Month',
+            '2 Months',
+            '3 Months',
+            '4 Months',
+            '5 Months',
+            '6 Months',
+            '9 Months',
+            '1 Year',
+            'Other',
+        ];
         $this->logo = $logo;
+        $this->durations = $durations;
+
         $user = User::where('id', Auth::id())->first();
         View()->share('logo', $logo);
+        View()->share('durations', $durations);
         View()->share('user', $user);
         View()->share('config', $this->getConfig());
     }
@@ -421,29 +446,137 @@ class DashboardController extends Controller
                 ];
             })->filter();
 
-        // Credit Tours data
-        $creditToursTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+        $creditHoursTrainings = Doctor_activity::where("user_id", Auth::user()->id)
             ->whereNotNull('credit_hours')
             ->get()
-            ->groupBy('credit_hours')
-            ->map(function ($group) {
+            ->map(function ($activity) {
                 return [
-                    'credit_hours' => $group->first()->credit_hours,
-                    'total_trainings' => $group->count(),
+                    'activity_title' => $activity->title,
+                    'credit_hours' => $activity->credit_hours,
                 ];
-            })->filter();
+            });
+        $allDurations = $this->durations;
 
-        // Duration data
+        // Fetch user's trainings grouped by duration
         $durationTrainings = Doctor_activity::where("user_id", Auth::user()->id)
             ->whereNotNull('duration')
             ->get()
             ->groupBy('duration')
-            ->map(function ($group) {
+            ->mapWithKeys(function ($group) {
                 return [
-                    'duration' => $group->first()->duration,
-                    'total_trainings' => $group->count(),
+                    $group->first()->duration => $group->count(),
                 ];
-            })->filter();
+            });
+
+        // Combine all durations with the user's durationTrainings
+        $durationData = collect($allDurations)->map(function ($duration) use ($durationTrainings) {
+            return [
+                'duration' => $duration,
+                'total_trainings' => $durationTrainings->get($duration, 0), // Show 0 if no trainings
+            ];
+        });
+
+        $currentYear = isset($_GET['year']) ? $_GET['year'] : Carbon::now()->year;
+        $currentYearForYearly =  Carbon::now()->year;
+
+        // Fetch activities for the current user, grouped by month for the current year
+        $monthlyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereYear('created_at', $currentYear)
+            ->selectRaw('MONTH(created_at) as month, COUNT(*) as total_trainings')
+            ->groupBy('month')
+            ->orderBy('month', 'asc')
+            ->get()
+            ->keyBy('month') // Key by month for easy access
+            ->toArray();
+
+        // Create an array for all months, initializing counts to zero
+        $allMonths = [];
+        for ($month = 1; $month <= 12; $month++) {
+            $monthName = Carbon::create(null, $month, 1)->format('F');
+            $totalTrainings = $monthlyTrainings[$month]['total_trainings'] ?? 0; // Get count or default to 0
+            $allMonths[] = [
+                'month' => $monthName,
+                'total_trainings' => $totalTrainings
+            ];
+        }
+
+
+        // Fetch user registration year
+        $userRegistrationYear = User::where("id", Auth::user()->id)
+            ->first()
+            ->created_at->year;
+
+
+        $userRegisteredYears  = range($userRegistrationYear, $currentYearForYearly);
+
+        // Fetch activities for the current user, grouped by year
+        $yearlyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->selectRaw('YEAR(created_at) as year, COUNT(*) as total_trainings')
+            ->groupBy('year')
+            ->orderBy('year', 'asc')
+            ->get()
+            ->keyBy('year') // Key by year for easy access
+            ->toArray();
+
+        // Create an array for all years from registration year to current year
+        $allYears = [];
+        for ($year = $userRegistrationYear; $year <= $currentYearForYearly; $year++) {
+            $totalTrainings = $yearlyTrainings[$year]['total_trainings'] ?? 0; // Get count or default to 0
+            $allYears[] = [
+                'year' => $year,
+                'total_trainings' => $totalTrainings
+            ];
+        }
+
+        // Fetch training counts by month
+        $monthlyTrainings = Doctor_activity::where("user_id", Auth::user()->id)
+            ->whereYear('created_at', $currentYear)
+            ->selectRaw('MONTH(created_at) as month, COUNT(*) as total_trainings')
+            ->groupBy('month')
+            ->orderBy('month', 'asc')
+            ->get()
+            ->keyBy('month')
+            ->toArray();
+
+        // Prepare quarterly data with month details
+        $allQuarters = [];
+        $monthNames = [
+            1 => 'January',
+            2 => 'February',
+            3 => 'March',
+            4 => 'April',
+            5 => 'May',
+            6 => 'June',
+            7 => 'July',
+            8 => 'August',
+            9 => 'September',
+            10 => 'October',
+            11 => 'November',
+            12 => 'December',
+        ];
+        $quarters = [
+            'Q1' => [1, 2, 3],
+            'Q2' => [4, 5, 6],
+            'Q3' => [7, 8, 9],
+            'Q4' => [10, 11, 12],
+        ];
+
+        foreach ($quarters as $quarter => $months) {
+            $totalTrainings = 0;
+            $monthDetails = [];
+
+            foreach ($months as $month) {
+                $monthCount = $monthlyTrainings[$month]['total_trainings'] ?? 0;
+                $totalTrainings += $monthCount;
+                $monthDetails[$monthNames[$month]] = $monthCount; // Use month name as key
+            }
+
+            $allQuarters[] = [
+                'quarter' => $quarter,
+                'total_trainings' => $totalTrainings,
+                'month_details' => $monthDetails, // Store as an associative array
+            ];
+        }
 
         return view('userdash.dashboard.analytics.charts', [
             'title' => 'Analytics',
@@ -453,8 +586,15 @@ class DashboardController extends Controller
             'typeTrainings' => $typeTrainings,
             'contentTrainings' => $contentTrainings,
             'statusTrainings' => $statusTrainings,
-            'creditToursTrainings' => $creditToursTrainings,
-            'durationTrainings' => $durationTrainings,
+            'creditHoursTrainings' => $creditHoursTrainings,
+            'durationTrainings' => $durationData,
+            'monthlyTrainings' => $allMonths,
+            'yearlyTrainings' => $allYears,
+            'currentYear' => $currentYear,
+            'currentYearForYearly' => $currentYearForYearly,
+            'userRegistrationYear' => $userRegistrationYear,
+            'allQuarters' => $allQuarters,
+            'userRegisteredYears' => $userRegisteredYears,
         ]);
     }
 }

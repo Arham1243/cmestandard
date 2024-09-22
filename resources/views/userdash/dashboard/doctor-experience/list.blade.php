@@ -157,21 +157,6 @@
             width: fit-content;
         }
 
-        .cross {
-            font-size: 1.25rem;
-            color: red;
-            width: 20px;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 100px;
-        }
-
-        .cross:hover {
-            background: #0000000f;
-            color: red;
-        }
     </style>
 @endsection
 @section('js')
