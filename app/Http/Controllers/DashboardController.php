@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Imagetable;
 use App\Models\Doctor_activity;
 use App\Models\Activity_categories;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\User_badge;
 use App\Models\Users_speciality_interests;
@@ -328,9 +329,10 @@ class DashboardController extends Controller
 
         // Find the activity by ID
         $activity = Doctor_activity::findOrFail($id);
+        $activity->training_status = 'pending';
+        $activity->fill($validatedData); // Fill the validated data
+        $activity->save(); // Save the activity
 
-        // Update the activity with validated data
-        $activity->update($validatedData);
 
         // Handle file upload if present
         if ($request->hasFile('certificate')) {
@@ -346,8 +348,29 @@ class DashboardController extends Controller
             $activity->update(['certificate' => $certificatePath]);
         }
 
+        $user = Auth::user();
+        $admin = Admin::first();
+        $data = [
+            'user' => $user,
+            'training' => $activity,
+            'logo' => $this->logo,
+        ];
+        try {
+            Mail::send('email.endorser-approval', $data, function ($message) use ($activity) {
+                $message->from(env('MAIL_FROM_ADDRESS'));
+                $message->to($activity->endorser_email);
+                $message->subject('CME Attendance Confirmation');
+            });
+            Mail::send('email.training-edited-notify-admin', $data, function ($message) use ($admin) {
+                $message->from(env('MAIL_FROM_ADDRESS'));
+                $message->to($admin->email);
+                $message->subject('Training Update Notification');
+            });
+        } catch (\Exception $e) {
+            // If email fails, dump the error
+            dd('Error sending email: ' . $e->getMessage());
+        }
 
-        // $this->updateCreditHours();
 
         // Redirect with success message
         return redirect()->route('dashboard.activity_listing')->with('notify_success', 'Trainings Updated Successfully!');

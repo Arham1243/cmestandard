@@ -113,9 +113,11 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="action-dropdown">
                                             <a class="dropdown-item"
-                                                href="{{ route('dashboard.edit_activity', $experience->id) }}"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i>
-                                                Edit</a>
+                                                onclick="return confirm('Updating this training will mark it as pending and send a new approval email to your endorser. Do you want to proceed?')"
+                                                href="{{ route('dashboard.edit_activity', $experience->id) }}">
+                                                <i class="fa fa-eye" aria-hidden="true"></i> Edit
+                                            </a>
+
 
                                             <a class="dropdown-item"
                                                 href="{{ route('dashboard.delete_activity', $experience->id) }}"
@@ -156,7 +158,6 @@
             justify-content: center;
             width: fit-content;
         }
-
     </style>
 @endsection
 @section('js')
