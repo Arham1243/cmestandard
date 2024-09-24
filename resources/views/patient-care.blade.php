@@ -44,10 +44,9 @@
                     </ul>
                 </div>
                 <div class="col-md-6 pt-5">
-                    <div class="why-accre__img">
+                    <div class="about-img">
                         <img src="{{ asset('assets/images/why-ac.png') }}" alt='image' class='imgFluid' loading='lazy'>
-                        <img src="{{ asset('assets/images/2333.png') }}" alt='image' class='imgFluid yellow-bg'
-                            loading='lazy'>
+                    
                     </div>
 
                 </div>

@@ -59,7 +59,7 @@
                                                 <div class="inputField">
                                                     <label class="title">Full Name <span
                                                             class="text-danger">*</span>:</label>
-                                                    <input value="{{ old('full_name') }}" type="text" placeholder=""
+                                                    <input autocomplete="off"  value="{{ old('full_name') }}" type="text" placeholder=""
                                                         name="full_name" required>
 
                                                 </div>
@@ -73,7 +73,7 @@
                                     <div class="col-lg-6">
                                         <div class="inputField">
                                             <label class="title">Phone:</label>
-                                            <input value="{{ old('phone') }}" type="text" placeholder="" name="phone">
+                                            <input autocomplete="off"  value="{{ old('phone') }}" type="text" placeholder="" name="phone">
 
                                         </div>
                                         @error('phone')
@@ -83,10 +83,9 @@
                                     <div class="col-lg-12">
                                         <div class="inputField">
                                             <label class="title">Email <span class="text-danger">*</span>:</label>
-                                            <input value="{{ old('email') }}" type="email" placeholder="" name="email"
+                                            <input autocomplete="off"  value="{{ old('email') }}" type="email" placeholder="" name="email"
                                                 required>
 
-                                            <span class="icon"><i class='bx bxs-envelope'></i></span>
                                         </div>
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
@@ -133,7 +132,7 @@
                                             <label class="title">Qualifications <span class="text-danger">*</span>:</label>
 
 
-                                            <input value="{{ old('qualification') }}" type="text" placeholder=""
+                                            <input autocomplete="off"  value="{{ old('qualification') }}" type="text" placeholder=""
                                                 name="qualification" required>
                                         </div>
                                         @error('Qualifications')
@@ -146,7 +145,7 @@
                                                 <span class="text-danger">*</span>:</label>
 
 
-                                            <input value="{{ old('country_id_num') }}" type="number" placeholder=""
+                                            <input autocomplete="off"  value="{{ old('country_id_num') }}" type="number" placeholder=""
                                                 name="country_id_num" required>
                                         </div>
                                         @error('country_id_num')
@@ -158,8 +157,8 @@
                                             <label class="title">Country <span class="text-danger">*</span>:</label>
 
 
-                                            <input value="{{ old('country') }}" type="text" placeholder=""
-                                                name="country" required>
+                                            <input autocomplete="off"  value="{{ old('country') }}" type="text" placeholder=""
+                                                name="country">
                                         </div>
                                         @error('country')
                                             <div class="text-danger">{{ $message }}</div>
@@ -171,7 +170,7 @@
                                                 <span class="text-danger">*</span>:</label>
 
 
-                                            <input value="{{ old('medical_license_number') }}" type="text"
+                                            <input autocomplete="off"  value="{{ old('medical_license_number') }}" type="text"
                                                 placeholder="" name="medical_license_number" required>
 
                                         </div>
@@ -184,7 +183,7 @@
                                         <div class="inputField">
                                             <label class="title">Institution Name <span
                                                     class="text-danger">*</span>:</label>
-                                            <input value="{{ old('institution_name') }}" type="text" placeholder=""
+                                            <input autocomplete="off"  value="{{ old('institution_name') }}" type="text" placeholder=""
                                                 name="institution_name" required>
 
                                         </div>
@@ -196,7 +195,7 @@
                                         <div class="inputField">
                                             <label class="title">Institution City <span
                                                     class="text-danger">*</span>:</label>
-                                            <input value="{{ old('institution_city') }}" type="text" placeholder=""
+                                            <input autocomplete="off"  value="{{ old('institution_city') }}" type="text" placeholder=""
                                                 name="institution_city" required>
 
                                         </div>
@@ -207,7 +206,7 @@
                                     <div class="col-lg-12">
                                         <div class="inputField">
                                             <label class="title">Birthday <span class="text-danger">*</span>:</label>
-                                            <input value="{{ old('birthday') }}" type="date" placeholder=""
+                                            <input autocomplete="off"  autocomplete="off"  value="{{ old('birthday') }}" type="date" placeholder=""
                                                 name="birthday" required>
 
                                         </div>
@@ -220,12 +219,14 @@
                                     <div class="col-12">
                                         <div class="inputField">
                                             <label class="title">Password <span class="text-danger">*</span>:</label>
-                                            <input type="password" placeholder="" class="passwordInput"
-                                                id="passwordInput" name="password" required>
+                                            <div class="position-relative">
+                                                <input autocomplete="off"  autocomplete="off"  type="password" placeholder="" class="passwordInput"
+                                                    id="passwordInput" name="password" required>
 
-                                            <span class="icon showPassword" onclick="showHide()">
-                                                <i class='bx bxs-show' id="toggleIcon"></i>
-                                            </span>
+                                                <span class="icon showPassword" onclick="showHide()">
+                                                    <i class='bx bxs-show' id="toggleIcon"></i>
+                                                </span>
+                                            </div>
                                         </div>
                                         @error('password')
                                             <div class="text-danger">{{ $message }}</div>
@@ -239,7 +240,7 @@
                                                 <img src="{{ asset('assets/images/user.png') }}" alt="image"
                                                     class="imgFluid profile-img" loading="lazy">
                                             </label>
-                                            <input type="file" name="profile_img" id="profile-img"
+                                            <input autocomplete="off"  type="file" name="profile_img" id="profile-img"
                                                 onchange="thumb(this);" class="d-none" required>
                                             <div class="placeholder-user__name">Profile Image</div>
                                             @error('profile_img')

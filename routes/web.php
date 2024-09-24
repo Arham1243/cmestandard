@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/about-us', [IndexController::class, 'about_us'])->name('about-us');
 Route::get('/faqs', [IndexController::class, 'faqs'])->name('faqs');
 Route::get('/index', [IndexController::class, 'index'])->name('index');
-Route::get('/objectives-of-cme:', [IndexController::class, 'objectives_of_cme'])->name('objectives-of-cme');
+Route::get('/objectives-of-cme', [IndexController::class, 'objectives_of_cme'])->name('objectives-of-cme');
 Route::get('/why-accredited', [IndexController::class, 'why_accredited'])->name('why-accredited');
 Route::get('/cme-for-improved-patient-care', [IndexController::class, 'patient_care'])->name('patient-care');
 Route::get('/cme-for-career-advancement', [IndexController::class, 'career_advancement'])->name('career_advancement');

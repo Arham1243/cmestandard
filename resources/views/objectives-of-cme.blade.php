@@ -27,7 +27,8 @@
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
                             <div class="obj-icon">
-                                <img src="assets/images/report-ico 1.png" alt="image" class="imgFluid" loading="lazy" />
+                                <img src="{{ asset('assets/images/report-ico 1.png') }}" alt="image" class="imgFluid"
+                                    loading="lazy" />
                             </div>
                         </div>
                         <div class="obj-box__content">
@@ -54,7 +55,8 @@
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
                             <div class="obj-icon">
-                                <img src="assets/images/shield-ico 1.png" alt="image" class="imgFluid" loading="lazy" />
+                                <img src="{{ asset('assets/images/shield-ico 1.png') }}" alt="image" class="imgFluid"
+                                    loading="lazy" />
                             </div>
                         </div>
                         <div class="obj-box__content">
@@ -66,7 +68,8 @@
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
                             <div class="obj-icon">
-                                <img src="assets/images/report-ico 1.png" alt="image" class="imgFluid" loading="lazy" />
+                                <img src="{{ asset('assets/images/report-ico 1.png') }}" alt="image" class="imgFluid"
+                                    loading="lazy" />
                             </div>
                         </div>
                         <div class="obj-box__content">
@@ -91,7 +94,8 @@
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
                             <div class="obj-icon">
-                                <img src="assets/images/shield-ico 1.png" alt="image" class="imgFluid" loading="lazy" />
+                                <img src="{{ asset('assets/images/shield-ico 1.png') }}" alt="image" class="imgFluid"
+                                    loading="lazy" />
                             </div>
                         </div>
                         <div class="obj-box__content">

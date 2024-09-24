@@ -36,7 +36,7 @@
         <!-- about-us -->
         <div class="about-us">
             <div class="group3-img">
-                <img src='assets/images/Group 1707479537.png' alt='image' class='imgFluid' loading='lazy'>
+                <img src='{{ asset('assets/images/Group 1707479537.png') }}' alt='image' class='imgFluid' loading='lazy'>
             </div>
             <div class="container">
                 <div class="about-us__content">
@@ -59,7 +59,7 @@
             <div class="why-cme__content">
                 <div class="section-content">
                     <div class="heading">Why CME</div>
-                    <div class="subHeading w-75 mx-auto">Why You Should Choose 
+                    <div class="subHeading w-75 mx-auto">Why You Should Choose
                         CME Standard as your Companion?</div>
                     <p>Continuing Medical Education (CME) is essential for physicians throughout their careers for several
                         important reasons:</p>
@@ -72,7 +72,8 @@
             <div class="row pt-4">
                 <div class="col-md-5">
                     <div class="why-cme__img">
-                        <img src='assets/images/Group 1707479605 (1).png' alt='image' class='imgFluid' loading='lazy'>
+                        <img src='{{ asset('assets/images/Group 1707479605 (1).png') }}' alt='image' class='imgFluid'
+                            loading='lazy'>
                     </div>
                 </div>
                 <div class="col-md-7 pt-2">
@@ -259,23 +260,27 @@
                             important reasons:</p>
                     </div>
                     <ul class="why-accre__pra">
-                            <li class="why-accre__list">
-                                <strong>Relevance and Quality Assurance:</strong>
-                                Accredited CME programs undergo rigorous review and approval processes to ensure they meet high
-                                standards of educational quality, relevance to medical practice, and alignment with
-                                evidence-based medicine. This ensures that the content is up-to-date, accurate, and applicable
-                                to the needs of physicians across various specialties and practice settings.
-                            </li>
-                            <li class="why-accre__list">
-                                <strong>Meeting Regulatory and Professional Requirements:</strong>
-                                Many regulatory bodies, professional societies, hospitals, and healthcare organizations require physicians to participate in accredited CME to maintain licensure, certification, and other professional privileges. Accredited CME programs provide assurance that the education received meets these requirements and contributes to ongoing professional development.
-                            </li>
+                        <li class="why-accre__list">
+                            <strong>Relevance and Quality Assurance:</strong>
+                            Accredited CME programs undergo rigorous review and approval processes to ensure they meet high
+                            standards of educational quality, relevance to medical practice, and alignment with
+                            evidence-based medicine. This ensures that the content is up-to-date, accurate, and applicable
+                            to the needs of physicians across various specialties and practice settings.
+                        </li>
+                        <li class="why-accre__list">
+                            <strong>Meeting Regulatory and Professional Requirements:</strong>
+                            Many regulatory bodies, professional societies, hospitals, and healthcare organizations require
+                            physicians to participate in accredited CME to maintain licensure, certification, and other
+                            professional privileges. Accredited CME programs provide assurance that the education received
+                            meets these requirements and contributes to ongoing professional development.
+                        </li>
                     </ul>
                     <a href="{{ route('why-accredited') }}" class="read-more__btn">Read-More</a>
                 </div>
                 <div class="col-md-6 pt-5">
                     <div class="why-accre__img">
-                        <img src="{{ asset('assets/images/why-ac.png') }}" alt='image' class='imgFluid' loading='lazy'>
+                        <img src="{{ asset('assets/images/why-ac.png') }}" alt='image' class='imgFluid'
+                            loading='lazy'>
                         <img src="{{ asset('assets/images/2333.png') }}" alt='image' class='imgFluid yellow-bg'
                             loading='lazy'>
                     </div>
@@ -298,7 +303,7 @@
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
                             <div class="obj-icon">
-                                <img src="assets/images/report-ico 1.png" alt="image" class="imgFluid"
+                                <img src="{{ asset('assets/images/report-ico 1.png') }}" alt="image" class="imgFluid"
                                     loading="lazy" />
                             </div>
                         </div>
@@ -325,10 +330,8 @@
                 <div class="col-md-4">
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
-                            <div class="obj-icon">
-                                <img src="assets/images/shield-ico 1.png" alt="image" class="imgFluid"
-                                    loading="lazy" />
-                            </div>
+                            <div class="obj-icon"> <img src="{{ asset('assets/images/shield-ico 1.png') }}"
+                                    alt="image" class="imgFluid" loading="lazy" /></div>
                         </div>
                         <div class="obj-box__content">
                             <div class="title">Learn and refine skills through simulation-based hands-on training.</div>
@@ -338,10 +341,8 @@
                 <div class="col-md-4">
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
-                            <div class="obj-icon">
-                                <img src="assets/images/report-ico 1.png" alt="image" class="imgFluid"
-                                    loading="lazy" />
-                            </div>
+                            <div class="obj-icon"> <img src="{{ asset('assets/images/report-ico 1.png') }}"
+                                    alt="image" class="imgFluid" loading="lazy" /></div>
                         </div>
                         <div class="obj-box__content">
                             <div class="title">Gain professional growth and a means to advance career status.</div>
@@ -364,9 +365,8 @@
                 <div class="col-md-4">
                     <div class="obj-boxs">
                         <div class="obj-icon__box">
-                            <div class="obj-icon">
-                                <img src="assets/images/shield-ico 1.png" alt="image" class="imgFluid"
-                                    loading="lazy" />
+                            <div class="obj-icon"> <img src="{{ asset('assets/images/shield-ico 1.png') }}"
+                                    alt="image" class="imgFluid" loading="lazy" />
                             </div>
                         </div>
                         <div class="obj-box__content">
@@ -733,7 +733,8 @@
     <!-- reviews -->
     <div class="reviews">
         <div class="group-img">
-            <img src='assets/images/Group 1707479537.png' alt='image' class='imgFluid' loading='lazy'>
+            <img src='{{ asset('assets/images/Group 1707479537.png') }}' alt='image' class='imgFluid'
+                loading='lazy'>
         </div>
         <div class="container">
             <div class="row">
@@ -886,8 +887,8 @@
 
         </div>
         <!-- <div class="group-img">
-                                <img src="assets/images/Group 1707479537.png" alt="image" class="imgFluid" loading="lazy">
-                            </div> -->
+                                        <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
+                                    </div> -->
     </div>
 @endsection
 @section('css')
