@@ -1142,7 +1142,7 @@ li.why-accre__list,
 
 li.why-accre__list::before,
 .why-accre__pra > div::before {
-    content: "•";
+    content: "â€¢";
     position: absolute;
     left: -28px;
     top: -11px;
@@ -2622,7 +2622,6 @@ li.page-item.active span.page-link {
   
   .sideBar__nav li {
     width: 100%;
-    border-bottom: 1px solid #cccccc3b;
   }
   
   .drop-down.drop-down--alt {
