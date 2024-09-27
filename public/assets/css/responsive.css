@@ -1,7 +1,289 @@
-@media only screen and (max-width: 1400px) {}
+@media only screen and (max-width: 1400px) {
+}
 
-@media only screen and (max-width: 1200px) {}
+@media only screen and (max-width: 1200px) {
+}
 
-@media only screen and (max-width: 992px) {}
+@media only screen and (max-width: 992px) {
+}
 
-@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 768px) {
+    .header-main__menu {
+        display: block;
+    }
+    .header-nav {
+        display: none;
+    }
+
+    .header-btns {
+        display: none;
+    }
+    .banner-heading {
+        font-size: 44px;
+    }
+    .banner-content .title {
+        font-size: 26px;
+    }
+    .banner-content p {
+        font-size: 15px;
+        padding: 0 10rem;
+    }
+    .banner {
+        width: 188%;
+        height: 100%;
+        border-radius: 0%;
+    }
+    .themeBtn {
+        font-size: 1rem;
+        padding: 0.55rem 1.35rem;
+    }
+
+    .section-content--light .heading {
+        font-size: 1.2rem;
+    }
+    .section-content--light .subHeading {
+        font-size: 2.2rem;
+    }
+    .section-content--light p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    .section-content .subHeading {
+        font-size: 1.55rem;
+        width: 100% !important;
+    }
+    .section-content p {
+        font-size: 1.35rem;
+        padding: 0;
+    }
+    .why-cme__img {
+        height: 100%;
+        width: 100%;
+        position: static;
+    }
+    li.why-accre__list,
+    .why-accre__pra > div {
+        font-size: 15px;
+        margin-left: 2rem;
+    }
+
+    a.read-more__btn {
+        font-size: 16px;
+        margin-left: 2rem;
+    }
+    .why-accre .section-content p {
+        margin-left: 1rem;
+        font-size: 16px;
+    }
+    .why-accre .section-content .subHeading {
+        margin-left: 1rem;
+    }
+    .why-accre__img :first-child {
+        height: 280px;
+    }
+    .why-accre__img :last-child {
+        width: 136px;
+        height: 136px;
+        top: 174px;
+    }
+
+    .msg-form__contant {
+        padding: 5rem 2rem 3rem;
+    }
+    .msg-form {
+        position: relative;
+        top: 393px;
+    }
+    .contact-form {
+        top: 0;
+        padding: 3rem 0 14rem;
+    }
+    .msg-form {
+        padding-left: 0;
+    }
+    .msg-form__item {
+        margin-bottom: 6px;
+    }
+    .footer-content {
+        margin: 8px 0;
+    }
+    footer.footer {
+        padding: 2rem 0;
+    }
+    .doctor-img__container img {
+        display: none;
+    }
+    .about-us {
+        padding: 3rem 0 3rem;
+        top: 0;
+    }
+    .why-cme {
+        padding: 3rem 0;
+        margin-top: 0;
+    }
+    .doctor-img__container {
+        display: none;
+    }
+    .banner-content {
+        margin-top: 7rem;
+    }
+    .banner-wrapper {
+        width: 100%;
+        height: 100%;
+        min-height: 78vh;
+    }
+    .banner-bg {
+        height: 146px;
+        width: 207%;
+        top: -272px;
+        left: -534px;
+    }
+    .header-btns ul {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 2rem;
+    }
+    .sideBar .header-btns {
+        display: block !important;
+    }
+    .doc-profile {
+        margin: 5rem 0 3rem;
+    }
+    .doc-contact__content {
+        padding: 1rem;
+    }
+    span.txtHide {
+        display: none;
+    }
+    button#download-pdf {
+        /* width: 100% !important; */
+    }
+    .doc-profile__btns {
+        gap: 7px !important;
+        flex-wrap: wrap;
+    }
+    .doc-profile__btns .themeBtn {
+        width: 9px !important;
+        height: 28px;
+        display: none;
+    }
+    .doc-profile__main {
+        gap: 25px;
+    }
+    .why-cme .row.pt-4 {
+        padding: 0 !important;
+    }
+    .obj-icon__box {
+        top: -39px;
+        height: 64px;
+        width: 64px;
+    }
+    .top-doctors__img {
+        width: 100%;
+        height: 421px;
+    }
+
+.header-logo {
+    width: 177px;}
+    .faq-icon {
+        font-size: 1.35rem;
+    }
+    .faqs-single__header .faqs-content__title {
+        margin: 0;
+        font-size: 15px;
+    }
+    .reviews-pra {
+        font-size: 14px;
+    }
+    .top-doc .slick-slide {
+        margin-right: 0;
+    }
+    .top-doc__content {
+        cursor: pointer;
+        padding: 1rem;
+    }
+    .quotation {
+        width: 26px;
+        height: 26px;
+    }
+    .review-person .name {
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .review-person .title {
+        font-size: 12px;
+    }
+    .reviews .slick-slide {
+        margin-right: 0;
+    }
+    .review-box {
+        margin: 8px;
+    }
+    .contact-info {
+        width: 100%;
+        position: absolute;
+        top: 18px;
+        z-index: 1;
+        left: 0;
+    }
+    ul.footer-icons.contact-info__icons i {
+        font-size: 30px;
+    }
+    .contact-icon .contact-title {
+        font-size: 14px;
+    }
+
+    .contact-icon .icon i {
+        font-size: 22px;
+    }
+    .contact-content p {
+        font-size: 13px;
+    }
+    .contact-icon {
+        padding: 0.35rem 0;
+    }
+    body .contact-heading,
+    body .contact-heading * {
+        font-size: 24px;
+    }
+    .obj-box__content .title {
+        font-size: 21px;
+    }
+    .topbar-profile__details .name {
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+    .topbar-profile__details .option {
+        font-size: 0.75rem;
+    }
+    .topbar.scroll .topbar-profile__img {
+        box-shadow: 0 0 0 4px #fff, 0 0 0 6px var(--color-secondary);
+    }
+    .topbar-profile {
+        gap: 1rem;
+    }
+    .topbar-profile__img {
+        width: 58px;
+    }
+    .doc-profile__desti {
+        font-size: 1.25rem;
+    }
+    .doc-profile__name {
+        font-size: 1.55rem;
+        letter-spacing: 0;
+    }
+    .doc-details {
+        padding-left: 0;
+    }
+    .doc-profile__name .profile-content__badge {
+        width: 30px;
+        margin-left: 1rem;
+    }
+    .doc-profile__content {
+        width: 100%;
+    }
+    .doc-profile__img {
+        width: 100%;}
+}

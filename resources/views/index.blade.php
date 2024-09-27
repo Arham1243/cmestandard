@@ -545,7 +545,7 @@
                             <img src="{{ asset('assets/images/dr1.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -560,7 +560,7 @@
                             <img src="{{ asset('assets/images/dr2.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -575,7 +575,7 @@
                             <img src="{{ asset('assets/images/dr3.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -590,7 +590,7 @@
                             <img src="{{ asset('assets/images/dr4.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -605,7 +605,7 @@
                             <img src="{{ asset('assets/images/dr3.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -620,7 +620,7 @@
                             <img src="{{ asset('assets/images/dr6.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -635,7 +635,7 @@
                             <img src="{{ asset('assets/images/dr7.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -650,7 +650,7 @@
                             <img src="{{ asset('assets/images/dr8.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -665,7 +665,7 @@
                             <img src="{{ asset('assets/images/dr9.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -680,7 +680,7 @@
                             <img src="{{ asset('assets/images/dr10.png') }}" alt='image' class='imgFluid'
                                 loading='lazy'>
                         </div>
-                        <div class="top-doc__details">
+                        <div class="top-doc__details top-doc__right">
                             <div class="dr-name">
                                 Dr name
                             </div>
@@ -887,8 +887,8 @@
 
         </div>
         <!-- <div class="group-img">
-                                        <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
-                                    </div> -->
+                                            <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
+                                        </div> -->
     </div>
 @endsection
 @section('css')

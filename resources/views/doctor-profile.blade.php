@@ -3,7 +3,7 @@
     <div class="topbar" id="topbar">
         <div class="container">
 
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between doc-profile__main">
                 <div class="topbar-profile">
                     <div class="topbar-profile__img">
                         <img src='{{ asset($user->profile_img ?? 'assets/images/placeholder.png') }}'
@@ -22,15 +22,15 @@
 
                     </div>
                 </div>
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-3 doc-profile__btns">
                     @if (Auth::check())
-                        <a href="{{ route('dashboard.editProfile') }}" target="_blank" class="themeBtn themeBtn--sm"><i class='bx bxs-edit-alt' ></i>Edit
-                            Profile</a>
+                        <a href="{{ route('dashboard.editProfile') }}" target="_blank" class="themeBtn themeBtn--sm"><i class='bx bxs-edit-alt' ></i><span class="txtHide">Edit
+                            Profile</span></a>
                     @endif
                     <button id="download-pdf" data-doctor-name="{{ $user->title_full_name }}" class="themeBtn themeBtn--sm"
                         style="width:12rem;">
                         <div class="spinner-border d-none user-select-none" role="status"> </div>
-                        <span class="btn-text user-select-none"><i class='bx bxs-download'></i>Download Profile</span>
+                        <span class="btn-text user-select-none"><i class='bx bxs-download'></i><span class="txtHide">Download Profile</span></span>
 
                     </button>
                 </div>
