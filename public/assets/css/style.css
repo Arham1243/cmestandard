@@ -1142,7 +1142,7 @@ li.why-accre__list,
 
 li.why-accre__list::before,
 .why-accre__pra > div::before {
-    content: "â€¢";
+    content: '•';
     position: absolute;
     left: -28px;
     top: -11px;
