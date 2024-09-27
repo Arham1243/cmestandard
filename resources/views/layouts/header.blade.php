@@ -128,50 +128,52 @@
                 </div>
             </div>
         </li> --}}
-        <div class="header-btns">
-            <ul class="header-btns__list">
-                @if (!Auth::check())
-                    <li class="header-btns__item">
-                        <a href="{{ route('login') }}" title="login" class="loginBtn">
-                            <span>Login</span>
-                            <div class="header-btns__icon">
-                                <i class='bx bxs-user'></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="header-btns__item">
-                        <a href="{{ route('sign_up') }}" class="Become-member themeBtn">
-                            <span>Become a member</span>
-                        </a>
-                    </li>
-                @else
-                    <li class="header-btns__item">
-                        <a target="_blank" href="{{ route('doctor_profile', Auth::user()->slug) }}"
-                            class="Become-member themeBtn">
-                            <i class='bx bxs-user'></i>My CME Profile
-                        </a>
-                    </li>
-                    <li class="header-btns__item">
-                        <a href="{{ route('dashboard.activity_listing') }}" class="Become-member themeBtn">
-                            <i class='bx bxs-graduation'></i>My CME Tracking Transcript
-                        </a>
-                    </li>
-                    <li class="header-btns__item">
-                        <a href="{{ route('dashboard.index') }}" class="Become-member themeBtn">
-                            <i class='bx bxs-user-circle'></i>Dashboard
-                        </a>
-                    </li>
-                    <li class="header-btns__item">
-                        <a href="{{ route('logout') }}" title="login" class="loginBtn">
-                            <span>Logout</span>
-                            <div class="header-btns__icon">
-                                <i class='bx bxs-log-out'></i>
-                            </div>
-                        </a>
-                    </li>
-                @endif
 
-            </ul>
-        </div>
     </ul>
+
+    <div class="header-btns">
+        <ul class="header-btns__list">
+            @if (!Auth::check())
+                <li class="header-btns__item">
+                    <a href="{{ route('login') }}" title="login" class="loginBtn">
+                        <span>Login</span>
+                        <div class="header-btns__icon">
+                            <i class='bx bxs-user'></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="header-btns__item">
+                    <a href="{{ route('sign_up') }}" class="Become-member themeBtn">
+                        <span>Become a member</span>
+                    </a>
+                </li>
+            @else
+                <li class="header-btns__item">
+                    <a target="_blank" href="{{ route('doctor_profile', Auth::user()->slug) }}"
+                        class="Become-member themeBtn">
+                        <i class='bx bxs-user'></i>My CME Profile
+                    </a>
+                </li>
+                <li class="header-btns__item">
+                    <a href="{{ route('dashboard.activity_listing') }}" class="Become-member themeBtn">
+                        <i class='bx bxs-graduation'></i>My CME Tracking Transcript
+                    </a>
+                </li>
+                <li class="header-btns__item">
+                    <a href="{{ route('dashboard.index') }}" class="Become-member themeBtn">
+                        <i class='bx bxs-user-circle'></i>Dashboard
+                    </a>
+                </li>
+                <li class="header-btns__item">
+                    <a href="{{ route('logout') }}" title="login" class="loginBtn">
+                        <span>Logout</span>
+                        <div class="header-btns__icon">
+                            <i class='bx bxs-log-out'></i>
+                        </div>
+                    </a>
+                </li>
+            @endif
+
+        </ul>
+    </div>
 </div>

@@ -26,18 +26,23 @@
     }
     .banner-content p {
         font-size: 15px;
-        padding: 0 10rem;
+        padding: 0;
     }
     .banner {
-        width: 188%;
+        width: 100%;
         height: 100%;
         border-radius: 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .themeBtn {
         font-size: 1rem;
         padding: 0.55rem 1.35rem;
     }
-
+    .header-btns .themeBtn {
+        width: 100%;
+    }
     .section-content--light .heading {
         font-size: 1.2rem;
     }
@@ -125,7 +130,7 @@
         display: none;
     }
     .banner-content {
-        margin-top: 7rem;
+        margin-top: 0;
     }
     .banner-wrapper {
         width: 100%;
@@ -133,17 +138,23 @@
         min-height: 78vh;
     }
     .banner-bg {
-        height: 146px;
-        width: 207%;
-        top: -272px;
-        left: -534px;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    .banner-bg img {
+        height: 100%;
+    }
+    .header-btns__item {
+        width: 100%;
     }
     .header-btns ul {
-        display: flex;
+        /* display: flex; */
         gap: 12px;
         align-items: center;
         flex-wrap: wrap;
-        margin: 2rem;
+        margin: 1rem 2rem;
     }
     .sideBar .header-btns {
         display: block !important;
@@ -152,7 +163,7 @@
         margin: 5rem 0 3rem;
     }
     .doc-contact__content {
-        padding: 1rem;
+        padding: 0;
     }
     span.txtHide {
         display: none;
@@ -185,8 +196,9 @@
         height: 421px;
     }
 
-.header-logo {
-    width: 177px;}
+    .header-logo {
+        width: 177px;
+    }
     .faq-icon {
         font-size: 1.35rem;
     }
@@ -285,5 +297,17 @@
         width: 100%;
     }
     .doc-profile__img {
-        width: 100%;}
+        width: 100%;
+    }
+    .info-item {
+        gap: 0;
+        width: 100%;
+    }
+    .doc-profile__heading {
+        font-size: 17px;
+    }
+    .doc-profile__listing table *:not(i) {
+        font-size: 0.75rem;
+        line-height: 1.6;
+    }
 }
