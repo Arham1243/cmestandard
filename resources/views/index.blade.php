@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
-    <!-- banner -->
-    <div class="section-wrapper">
+    
+    <div class="section-wrapper test">
         <div class="banner-wrapper">
             <div class="banner">
                 <div class="banner-bg">
