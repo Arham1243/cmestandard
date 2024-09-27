@@ -18,7 +18,7 @@
                     @csrf
                     <div class="row justify-content-center">
 
-                        <div class="col-lg-12 col-md-12 col-6">
+                        <div class="col-lg-12 col-md-12 col-12">
                             <div class="form-group">
                                 <label>Name:</label>
 
@@ -28,7 +28,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-6">
+                        <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
                                 <label>min Credit Hours:</label>
 
@@ -38,7 +38,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-6">
+                        <div class="col-lg-6 col-md-12 col-12">
                             <div class="form-group">
                                 <label>Max Credit Hours:</label>
 

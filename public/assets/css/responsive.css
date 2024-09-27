@@ -93,7 +93,7 @@
     }
 
     .msg-form__contant {
-        padding: 5rem 2rem 3rem;
+        padding: 2rem;
     }
     .msg-form {
         position: relative;
@@ -235,8 +235,6 @@
     }
     .contact-info {
         width: 100%;
-        position: absolute;
-        top: 18px;
         z-index: 1;
         left: 0;
     }
@@ -310,4 +308,14 @@
         font-size: 0.75rem;
         line-height: 1.6;
     }
+    .faqs {
+        padding: 4rem 0;
+    }
+    .reviews {
+        padding: 4rem 0;
+    }
+    .obj-boxs {
+        margin-bottom: 5rem;
+    }
+
 }
