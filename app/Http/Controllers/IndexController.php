@@ -172,24 +172,24 @@ class IndexController extends Controller
             'logo' => $this->logo,
         ];
 
-        try {
-            // Send email to user
-            Mail::send('email.training-approval-update-user', $data, function ($message) use ($user) {
-                $message->from(env('MAIL_FROM_ADDRESS'));
-                $message->to($user->email);
-                $message->subject('Training Approval Notification');
-            });
+        // try {
+        //     // Send email to user
+        //     Mail::send('email.training-approval-update-user', $data, function ($message) use ($user) {
+        //         $message->from(env('MAIL_FROM_ADDRESS'));
+        //         $message->to($user->email);
+        //         $message->subject('Training Approval Notification');
+        //     });
 
-            // Send email to admin
-            Mail::send('email.training-approval-update-admin', $data, function ($message) use ($admin) {
-                $message->from(env('MAIL_FROM_ADDRESS'));
-                $message->to($admin->email);
-                $message->subject('Training Approval Notification');
-            });
-        } catch (\Exception $e) {
-            // If email fails, dump the error
-            dd('Error sending email: ', $e->getMessage());
-        }
+        //     // Send email to admin
+        //     Mail::send('email.training-approval-update-admin', $data, function ($message) use ($admin) {
+        //         $message->from(env('MAIL_FROM_ADDRESS'));
+        //         $message->to($admin->email);
+        //         $message->subject('Training Approval Notification');
+        //     });
+        // } catch (\Exception $e) {
+        //     // If email fails, dump the error
+        //     dd('Error sending email: ', $e->getMessage());
+        // }
 
         return redirect()->route('home')->with('notify_success', 'Training approved successfully!');
     }

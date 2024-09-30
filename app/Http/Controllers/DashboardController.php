@@ -249,16 +249,16 @@ class DashboardController extends Controller
         ];
 
 
-        try {
-            Mail::send('email.endorser-approval', $data, function ($message) use ($activity) {
-                $message->from(env('MAIL_FROM_ADDRESS'));
-                $message->to($activity->endorser_email);
-                $message->subject('CME Attendance Confirmation');
-            });
-        } catch (\Exception $e) {
-            // If email fails, dump the error
-            dd('Error sending email: ' . $e->getMessage());
-        }
+        // try {
+        //     Mail::send('email.endorser-approval', $data, function ($message) use ($activity) {
+        //         $message->from(env('MAIL_FROM_ADDRESS'));
+        //         $message->to($activity->endorser_email);
+        //         $message->subject('CME Attendance Confirmation');
+        //     });
+        // } catch (\Exception $e) {
+        //     // If email fails, dump the error
+        //     dd('Error sending email: ' . $e->getMessage());
+        // }
 
 
         return redirect()->route('dashboard.activity_listing')->with('notify_success', 'CME Training Added Successfully!!');
@@ -355,21 +355,21 @@ class DashboardController extends Controller
             'training' => $activity,
             'logo' => $this->logo,
         ];
-        try {
-            Mail::send('email.endorser-approval', $data, function ($message) use ($activity) {
-                $message->from(env('MAIL_FROM_ADDRESS'));
-                $message->to($activity->endorser_email);
-                $message->subject('CME Attendance Confirmation');
-            });
-            Mail::send('email.training-edited-notify-admin', $data, function ($message) use ($admin) {
-                $message->from(env('MAIL_FROM_ADDRESS'));
-                $message->to($admin->email);
-                $message->subject('Training Update Notification');
-            });
-        } catch (\Exception $e) {
-            // If email fails, dump the error
-            dd('Error sending email: ' . $e->getMessage());
-        }
+        // try {
+        //     Mail::send('email.endorser-approval', $data, function ($message) use ($activity) {
+        //         $message->from(env('MAIL_FROM_ADDRESS'));
+        //         $message->to($activity->endorser_email);
+        //         $message->subject('CME Attendance Confirmation');
+        //     });
+        //     Mail::send('email.training-edited-notify-admin', $data, function ($message) use ($admin) {
+        //         $message->from(env('MAIL_FROM_ADDRESS'));
+        //         $message->to($admin->email);
+        //         $message->subject('Training Update Notification');
+        //     });
+        // } catch (\Exception $e) {
+        //     // If email fails, dump the error
+        //     dd('Error sending email: ' . $e->getMessage());
+        // }
 
 
         // Redirect with success message
