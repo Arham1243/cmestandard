@@ -23,14 +23,16 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center gap-3 doc-profile__btns">
-                    @if (Auth::check())
-                        <a href="{{ route('dashboard.editProfile') }}" target="_blank" class="themeBtn themeBtn--sm"><i class='bx bxs-edit-alt' ></i><span class="txtHide">Edit
-                            Profile</span></a>
+                    @if (Auth::check() && Auth::user()->email == $user->email)
+                        <a href="{{ route('dashboard.editProfile') }}" target="_blank" class="themeBtn themeBtn--sm"><i
+                                class='bx bxs-edit-alt'></i><span class="txtHide">Edit
+                                Profile</span></a>
                     @endif
                     <button id="download-pdf" data-doctor-name="{{ $user->title_full_name }}" class="themeBtn themeBtn--sm"
                         style="width:12rem;">
                         <div class="spinner-border d-none user-select-none" role="status"> </div>
-                        <span class="btn-text user-select-none"><i class='bx bxs-download'></i><span class="txtHide">Download Profile</span></span>
+                        <span class="btn-text user-select-none"><i class='bx bxs-download'></i><span
+                                class="txtHide">Download Profile</span></span>
 
                     </button>
                 </div>
