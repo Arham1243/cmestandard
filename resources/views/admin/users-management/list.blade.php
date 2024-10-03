@@ -19,12 +19,11 @@
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
-                                        
+                                        <th>View Profile</th>
                                         <th>Full Name</th>
                                         <th>Phone</th>
                                         <th>Email</th>
                                         <th>Registration Date</th>
-
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -34,6 +33,9 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{{ $i }}</td>
+                                            <td>
+                                                <a class="eye-btn" href="{{ route('doctor_profile', $user->slug) }}"target="_blank"><i class="fa fa-eye"></i></a>
+                                            </td>
                                             <td>{{ $user->full_name }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->email }}</td>

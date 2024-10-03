@@ -2150,3 +2150,16 @@ li.heading {}
     border-bottom: 1px solid #ccc;
 }
 .bg-logo-wrapper.bg-logo-wrapper {/* background: #000; *//* padding: 2rem 1rem; */}
+
+.eye-btn {
+    width: 30px;
+    aspect-ratio: 1/1;
+    background: var(--color-primary);
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
