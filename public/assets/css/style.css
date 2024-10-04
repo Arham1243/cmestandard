@@ -703,9 +703,6 @@ ul.footer-icons {
     height: 100%;
 }
 
-.footer-logo {
-}
-
 body .footer-details,
 body .footer-details * {
     font-size: 24px;
@@ -2720,6 +2717,6 @@ li.page-item.active span.page-link {
 .slick-arrow:hover::before {
   color: #777777;
 }
-.slick-slide {
+.top-doc.slick-slide {
     margin: 0;
 }
