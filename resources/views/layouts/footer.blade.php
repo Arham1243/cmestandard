@@ -23,13 +23,12 @@
                     <?php App\Helpers\Helper::inlineEditable("div", ["class" => "footer-details"], "Quick links", "content27"); ?>
 
                     <ul class="footer-link">
-                        <li><a href="{{ route("about-us") }}">What is CME</a></li>
-                                <li><a href="{{ route("why-cme") }}">Why CME</a></li>
-                                <li><a href="{{ route("why-accredited") }}">Why accredited CME</a></li>
-                                <li><a href="{{ route("objectives-of-cme") }}">Objectives of CME</a></li>
-                                <li><a href="{{ route("patient-care") }}">CME for Improved Patient Care</a></li>
-                                <li><a href="{{ route("career_advancement") }}">CME for Career Advancement</a></li>
-                        <li><a href="{{ route('faqs') }}">FAQ's</a></li>
+                        <li><a href="{{ route('about-us') }}">What is CME</a></li>
+                        <li><a href="{{ route('why-cme') }}">Why CME</a></li>
+                        <li><a href="{{ route('why-accredited') }}">Why accredited CME</a></li>
+                        <li><a href="{{ route('objectives-of-cme') }}">Objectives of CME</a></li>
+                        <li><a href="{{ route('patient-care') }}">CME for Improved Patient Care</a></li>
+                        <li><a href="{{ route('career_advancement') }}">CME for Career Advancement</a></li>
                     </ul>
                 </div>
             </div>
