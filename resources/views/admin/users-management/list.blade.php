@@ -52,7 +52,7 @@
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="action-dropdown">
-                                                        @if ($user->is_active == 1)
+                                                        @if ($user->show_on_homepage == 1)
                                                             <a class="dropdown-item"
                                                                 href="{{ route('admin.show_on_homepage_user', $user->id) }}">
                                                                 <i class="fa fa-times" aria-hidden="true"></i> Remove from
