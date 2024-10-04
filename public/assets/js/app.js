@@ -55,14 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 $('.drs-slider').slick({
     dots: false,
-    arrows: false,
-    infinite: true,
+    arrows: true,
     speed: 300,
     reverse: false,
     slidesToShow: 5,
-    slidesToScroll: 2,
-    autoplay: true,
-    autoplaySpeed: 2000, 
+    slidesToScroll: 1,
     responsive: [
         {
             breakpoint: 1024,
@@ -87,16 +84,12 @@ $('.drs-slider').slick({
         }
     ]
 });
-$('.drs-slider--reverse').slick({
+$('.drs-slider2').slick({
     dots: false,
-    arrows: false,
-    infinite: true,
-    rtl: true,
+    arrows: true,
     speed: 300,
     slidesToShow: 5,
-    slidesToScroll: 2,
-    autoplay: true,
-    autoplaySpeed: 2000, 
+    slidesToScroll: 1,
     responsive: [
         {
             breakpoint: 1024,

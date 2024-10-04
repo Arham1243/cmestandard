@@ -386,7 +386,7 @@
                 <?php App\Helpers\Helper::inlineEditable('h2', ['class' => 'subHeading'], 'Meet our Top Doctors', 'content19'); ?>
 
             </div>
-            <div class="row pt-5 g-0 drs-slider">
+            <div class="row pt-5 drs-slider">
                 <div class="col-md">
                     <div class="top-doc__content">
                         <div class="top-doctors__img">
@@ -538,7 +538,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row pt-5 g-0 drs-slider--reverse" dir="rtl">
+            <div class="row pt-5 drs-slider2">
                 <div class="col-md">
                     <div class="top-doc__content">
                         <div class="top-doctors__img">

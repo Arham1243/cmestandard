@@ -113,7 +113,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="action-dropdown">
                                             <a class="dropdown-item"
-                                                onclick="return confirm('Updating this training will mark it as pending and send a new approval email to your endorser. Do you want to proceed?')"
+                                                {{-- onclick="return confirm('Updating this training will mark it as pending and send a new approval email to your endorser. Do you want to proceed?')" --}}
                                                 href="{{ route('dashboard.edit_activity', $experience->id) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i> Edit
                                             </a>

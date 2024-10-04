@@ -629,7 +629,7 @@ i.bx {
 }
 
 .top-doctors__img {
-    width: 245px;
+    /* width: 245px; */
     height: 305px;
     overflow: hidden;
     border-radius: 4px;
@@ -2662,3 +2662,60 @@ li.page-item.active span.page-link {
     display: none;
     color: #000;
   }
+  
+.slick-prev::before,
+.slick-next::before {
+  color: #000;
+  opacity: 1;
+  font-size: 1.75rem;
+  font-family: boxicons !important;
+  transition: all 300ms ease-in-out;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  transition: all 300ms ease-in-out;
+  z-index: 1;
+  opacity: 1 !important;
+  margin: 0 29px 0 34px;
+}
+
+.slick-arrow::before {
+  color: #000;
+  font-size: 1.75rem;
+  position: absolute;
+  background: #fff;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1 !important;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
+  left: 8px;
+  top: -5px;
+}
+
+.slick-next {
+  right: 0rem;
+}
+
+.slick-prev {
+  left: -1.25rem;
+}
+
+.slick-next::before {
+  content: "\ea50";
+}
+
+.slick-prev::before {
+  content: "\ea4d";
+}
+
+.slick-arrow:hover::before {
+  color: #777777;
+}
