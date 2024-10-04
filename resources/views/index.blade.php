@@ -698,7 +698,7 @@
     </div>
 
     <!-- faqs -->
-    <div class="faqs">
+    {{-- <div class="faqs">
         <div class="container">
             <div class="section-content text-center">
                 <?php App\Helpers\Helper::inlineEditable('h2', ['class' => 'subHeading'], 'Learn more about our platform <br> by user questions', 'content20'); ?>
@@ -728,7 +728,7 @@
 
             <a href="{{ route('faqs') }}" class="themeBtn mt-3 mx-auto d-block w-fit">View More</a>
         </div>
-    </div>
+    </div> --}}
 
     <!-- reviews -->
     <div class="reviews">
