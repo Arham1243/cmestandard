@@ -43,7 +43,7 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ date('d-M-Y', strtotime($user->created_at)) }}</td>
 
-                                            <td>{{ $user->is_active == 1 ? 'Visible on Homepage' : 'Hidden from Homepage' }}</td>
+                                            <td>{{ $user->show_on_homepage == 1 ? 'Visible on Homepage' : 'Hidden from Homepage' }}</td>
                                             <td>
                                                 <div class="dropdown show action-dropdown">
                                                     <a class=" dropdown-toggle" href="#" role="button"
@@ -54,13 +54,13 @@
                                                     <div class="dropdown-menu" aria-labelledby="action-dropdown">
                                                         @if ($user->is_active == 1)
                                                             <a class="dropdown-item"
-                                                                href="{{ route('admin.suspend_user', $user->id) }}">
+                                                                href="{{ route('admin.show_on_homepage_user', $user->id) }}">
                                                                 <i class="fa fa-times" aria-hidden="true"></i> Remove from
                                                                 Homepage
                                                             </a>
                                                         @else
                                                             <a class="dropdown-item"
-                                                                href="{{ route('admin.suspend_user', $user->id) }}">
+                                                                href="{{ route('admin.show_on_homepage_user', $user->id) }}">
                                                                 <i class="fa fa-check" aria-hidden="true"></i> Show on
                                                                 Homepage
                                                             </a>

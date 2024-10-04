@@ -104,7 +104,7 @@ class IndexController extends Controller
     {
         $testimonials = Testimonial::where("is_active", 1)->latest()->get();
         $welcome_slider = Imagetable::where("table_name", 'welcome-slider')->where("is_active_img", 1)->latest()->first();
-        $users = User::where("is_active", 1)->get();
+        $users = User::where("show_on_homepage", 1)->get();
 
 
         $faqs = Faq::where("is_active", 1)->limit(6)->latest()->get();

@@ -252,6 +252,19 @@ class AdminDashController extends Controller
             return redirect()->route('admin.users_listing')->with('notify_success', 'User Suspended Successfuly!!');
         }
     }    
+    public function show_on_homepage_user($id)
+    {
+        $user = User::where('id', $id)->first();
+        if ($user->show_on_homepage == 0) {
+            $user->show_on_homepage = 1;
+            $user->save();
+            return redirect()->route('admin.users_listing')->with('notify_success', 'The user has been successfully featured on the homepage.');
+        } else {
+            $user->show_on_homepage = 0;
+            $user->save();
+            return redirect()->route('admin.users_listing')->with('notify_success', 'The user has been successfully removed from the homepage.');
+        }
+    }    
 
     public function testimonial_listing()
     {
