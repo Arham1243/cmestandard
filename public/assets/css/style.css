@@ -638,6 +638,7 @@ i.bx {
 
 .top-doc__content {
     cursor: pointer;
+    padding: 0 10px;
 }
 
 .top-doc__details {
@@ -2680,7 +2681,7 @@ li.page-item.active span.page-link {
   transition: all 300ms ease-in-out;
   z-index: 1;
   opacity: 1 !important;
-  margin: 0 29px 0 34px;
+  margin: 0 14px 0 26px;
 }
 
 .slick-arrow::before {
@@ -2718,4 +2719,7 @@ li.page-item.active span.page-link {
 
 .slick-arrow:hover::before {
   color: #777777;
+}
+.slick-slide {
+    margin: 0;
 }

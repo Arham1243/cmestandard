@@ -380,7 +380,7 @@
 
     <!-- top-doc -->
     <div class="top-doc">
-        <div class="container-fluid p-0">
+        <div class="container-fluid">
             <div class="section-content text-center">
                 <?php App\Helpers\Helper::inlineEditable('h2', ['class' => 'subHeading'], 'Meet our Top Doctors', 'content19'); ?>
 
