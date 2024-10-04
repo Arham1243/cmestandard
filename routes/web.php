@@ -120,6 +120,7 @@ Route::middleware(['admin'])->prefix('admin')->namespace('admin')->group(functio
   Route::get('/edit-users/{id}', [AdminDashController::class, 'edit_user'])->name('admin.edit_user');
   Route::post('/edit-users', [AdminDashController::class, 'update_user'])->name('admin.update_user');
   Route::get('/suspend-user/{id}', [AdminDashController::class, 'suspend_user'])->name('admin.suspend_user');
+  Route::get('/user-show-on-homepage/{id}', [AdminDashController::class, 'user_show_on_homepage'])->name('admin.user_show_on_homepage');
   Route::get('/delete-user/{id}', [AdminDashController::class, 'delete_user'])->name('admin.delete_user');
   // ---------------------------------------Users---------------------------------------
 

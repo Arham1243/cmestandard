@@ -12,7 +12,7 @@
                             </div>
                         </div>
 
-                      
+
 
                         <div class="table-responsive">
                             <table id="user-table" class="table table-bordered" style="width:100%">
@@ -34,14 +34,16 @@
                                         <tr>
                                             <td>{{ $i }}</td>
                                             <td>
-                                                <a class="eye-btn" href="{{ route('doctor_profile', $user->slug) }}"target="_blank"><i class="fa fa-eye"></i></a>
+                                                <a class="eye-btn"
+                                                    href="{{ route('doctor_profile', $user->slug) }}"target="_blank"><i
+                                                        class="fa fa-eye"></i></a>
                                             </td>
                                             <td>{{ $user->full_name }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ date('d-M-Y', strtotime($user->created_at)) }}</td>
 
-                                            <td>{{ $user->is_active == 1 ? 'Active' : 'Non-Active' }}</td>
+                                            <td>{{ $user->is_active == 1 ? 'Visible on Homepage' : 'Hidden from Homepage' }}</td>
                                             <td>
                                                 <div class="dropdown show action-dropdown">
                                                     <a class=" dropdown-toggle" href="#" role="button"
@@ -50,19 +52,21 @@
                                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="action-dropdown">
-                                             
-
-
                                                         @if ($user->is_active == 1)
                                                             <a class="dropdown-item"
-                                                                href="{{ route('admin.suspend_user', $user->id) }}"><i
-                                                                    class="fa fa-ban" aria-hidden="true"></i> Suspend</a>
+                                                                href="{{ route('admin.suspend_user', $user->id) }}">
+                                                                <i class="fa fa-times" aria-hidden="true"></i> Remove from
+                                                                Homepage
+                                                            </a>
                                                         @else
                                                             <a class="dropdown-item"
-                                                                href="{{ route('admin.suspend_user', $user->id) }}"><i
-                                                                    class="fa fa-ban" aria-hidden="true"></i> Activate</a>
+                                                                href="{{ route('admin.suspend_user', $user->id) }}">
+                                                                <i class="fa fa-check" aria-hidden="true"></i> Show on
+                                                                Homepage
+                                                            </a>
                                                         @endif
-                                                        <a class="dropdown-item" onclick="return confirm('Are you sure you want to delete')"
+                                                        <a class="dropdown-item"
+                                                            onclick="return confirm('Are you sure you want to delete')"
                                                             href="{{ route('admin.delete_user', $user->id) }}"><i
                                                                 class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                                                     </div>

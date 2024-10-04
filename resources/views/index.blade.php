@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('content')
-    
     <div class="section-wrapper">
         <div class="banner-wrapper">
             <div class="banner">
@@ -387,21 +386,23 @@
 
             </div>
             <div class="row pt-5 drs-slider">
-                <div class="col-md">
-                    <div class="top-doc__content">
-                        <div class="top-doctors__img">
-                            <img src="{{ asset('assets/images/dr1.png') }}" alt='image' class='imgFluid'
-                                loading='lazy'>
-                        </div>
-                        <div class="top-doc__details">
-                            <div class="dr-name">
-                                Dr name
+                @foreach ($users as $user)
+                    <div class="col-md">
+                        <div class="top-doc__content">
+                            <div class="top-doctors__img">
+                                <img src="{{ asset($user->profile_img ?? 'assets/images/placeholder.png') }}"
+                                    alt=' {{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
                             </div>
-                            <div class="title"> Psychologist</div>
+                            <div class="top-doc__details">
+                                <div class="dr-name">
+                                    {{ $user->title_full_name }}
+                                </div>
+                                <div class="title"> {{ $user->specialityArea->name ?? '' }}</div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
                 <div class="col-md">
                     <div class="top-doc__content">
                         <div class="top-doctors__img">
@@ -538,7 +539,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row pt-5 drs-slider2">
+            {{-- <div class="row pt-5 drs-slider2">
                 <div class="col-md">
                     <div class="top-doc__content">
                         <div class="top-doctors__img">
@@ -691,7 +692,7 @@
                 </div>
 
 
-            </div>
+            </div> --}}
 
         </div>
 
@@ -887,8 +888,8 @@
 
         </div>
         <!-- <div class="group-img">
-                                            <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
-                                        </div> -->
+                                                <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
+                                            </div> -->
     </div>
 @endsection
 @section('css')

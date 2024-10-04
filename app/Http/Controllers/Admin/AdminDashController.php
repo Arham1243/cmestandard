@@ -251,7 +251,7 @@ class AdminDashController extends Controller
             $user->save();
             return redirect()->route('admin.users_listing')->with('notify_success', 'User Suspended Successfuly!!');
         }
-    }
+    }    
 
     public function testimonial_listing()
     {
