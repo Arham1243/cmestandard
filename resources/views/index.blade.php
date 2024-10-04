@@ -721,7 +721,7 @@
                         <?php App\Helpers\Helper::inlineEditable('p', ['class' => ''], 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, praesentium placeat odit aliquam magni perferendis.', 'content24'); ?>
 
 
-                        <div class="contact-icon__main">
+                        {{-- <div class="contact-icon__main">
                             <div class="contact-icon">
                                 <div class="icon">
                                     <i class='bx bxs-phone'></i>
@@ -744,7 +744,7 @@
                             </li>
                             <li><a href="{{ $config['LINKEDIN'] }}" target="_blank"><i
                                         class="bx bxl-linkedin-square"></i></a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>

@@ -11,11 +11,11 @@
                             loading='lazy'></a>
                             <?php App\Helpers\Helper::inlineEditable("p", ["class" => ""], "Our goal is at the heart of all that we do.", "content26"); ?>
 
-                    <ul class="footer-icons">
+                    {{-- <ul class="footer-icons">
                         <li><a target="_blank" href="{{ $config['FACEBOOK'] }}"><i class='bx bxl-facebook-circle'></i></a></li>
                         <li><a target="_blank" href="{{ $config['TWITTER'] }}"><i class='bx bxl-twitter'></i></a></li>
                         <li><a target="_blank" href="{{ $config['LINKEDIN'] }}"><i class='bx bxl-linkedin-square'></i></a></li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
             <div class="col-md-2 offset-md-1">
@@ -45,7 +45,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2 offset-md-1">
+            {{-- <div class="col-md-2 offset-md-1">
                 <div class="footer-content">
                     <?php App\Helpers\Helper::inlineEditable("div", ["class" => "footer-details"], "Contact Us", "content29"); ?>
 
@@ -55,7 +55,7 @@
                         <li><a href="javascript:void(0)">{{ $config['COMPANYADDRESS'] }}</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
     </div>

@@ -1307,7 +1307,7 @@ body .contact-heading * {
 }
 
 .contact-content {
-    padding: 1.75rem 1.85rem;
+    padding: 4.75rem 1.85rem;
     background-color: var(--color-secondary);
     color: #fff;
     box-shadow: 0px 10px 39.2px 0 rgb(0 0 0 / 30%);
@@ -2718,5 +2718,5 @@ li.page-item.active span.page-link {
   color: #777777;
 }
 .top-doc .slick-slide {
-    margin: 0;
+    margin: 0 !important;
 }
