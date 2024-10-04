@@ -11,11 +11,11 @@
                         <div class="doc-details">
                             <h2 class="doc-profile__name">
                                 {{ $user->title_full_name }}
-                                @if ($user->badge)
+                                {{-- @if ($user->badge)
                                     <img src="{{ asset('assets/images/' . $user->badge->name . '.png') }}"
                                         alt='{{ $user->badge->name }}' class='imgFluid profile-content__badge'
                                         loading='lazy'>
-                                @endif
+                                @endif --}}
                             </h2>
                             <h3 class="doc-profile__desti">{{ $user->specialityArea->name ?? '' }}</h3>
 
