@@ -2717,6 +2717,6 @@ li.page-item.active span.page-link {
 .slick-arrow:hover::before {
   color: #777777;
 }
-.top-doc.slick-slide {
+.top-doc .slick-slide {
     margin: 0;
 }
