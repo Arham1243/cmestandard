@@ -390,7 +390,7 @@
                     <div class="col-md">
                         <div class="top-doc__content">
                             <div class="top-doctors__img">
-                                <img src="{{ asset($user->profile_img ?? 'assets/images/placeholder.png') }}"
+                                <img src="{{ asset($user->profile_img ?? 'assets/images/user.png') }}"
                                     alt=' {{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
                             </div>
                             <div class="top-doc__details">
