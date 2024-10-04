@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="doc-profile__img">
-                        <img src='{{ asset($user->profile_img ?? 'assets/images/placeholder.png') }}'
+                        <img src='{{ asset($user->profile_img ?? 'assets/images/user.png') }}'
                             alt='{{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
                     </div>
                     <div class="doc-profile__content">

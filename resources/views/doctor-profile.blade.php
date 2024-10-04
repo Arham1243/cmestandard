@@ -6,7 +6,7 @@
             <div class="d-flex align-items-center justify-content-between doc-profile__main">
                 <div class="topbar-profile">
                     <div class="topbar-profile__img">
-                        <img src='{{ asset($user->profile_img ?? 'assets/images/placeholder.png') }}'
+                        <img src='{{ asset($user->profile_img ?? 'assets/images/user.png') }}'
                             alt='{{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
                     </div>
                     <div class="topbar-profile__details">
