@@ -131,13 +131,13 @@ class UserController extends Controller
                 $message->to($request->email);
                 $message->subject('Welcome To ' . env('APP_NAME'));
             });
-        
+
             $user->is_welcome_email_sent = 1;
             $user->save();
         } catch (\Throwable $th) {
             \Log::error('Error sending welcome email: ' . $th->getMessage());
         }
-        
+
 
         return redirect()->route('home')->with('notify_success', 'Signup successfully');
     }
@@ -204,7 +204,7 @@ class UserController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('email/reset-password', ['token' => $token, 'request' => $request, 'logo', $this->logo], function ($message) use ($request) {
+        Mail::send('email.reset-password', ['token' => $token, 'request' => $request, 'logo' => $this->logo], function ($message) use ($request) {
             $message->from(env('MAIL_FROM_ADDRESS'));
             $message->to($request->email);
             $message->subject('Reset Password');

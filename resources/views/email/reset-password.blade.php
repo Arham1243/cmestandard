@@ -87,7 +87,7 @@
                                     <td style="padding: 0 15px; text-align:center;">
                                         <a href="{{ route('forget-password-token', $token) }}"
                                             style="display:inline-block; background-color:#D0962A; color:#ffffff; padding:10px 20px; text-decoration:none; font-family:'Rubik',sans-serif; font-size:16px; border-radius:5px;">
-                                            Reset PasswordF
+                                            Reset Password
                                         </a>
                                     </td>
                                 </tr>
