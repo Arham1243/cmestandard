@@ -1,5 +1,5 @@
 
-<footer class="footer">
+{{-- <footer class="footer">
     <div class="footer-bg">
         <img src="{{ asset("assets/images/footer.png") }}" alt='image' class='imgFluid' loading='lazy'>
     </div>
@@ -60,7 +60,7 @@
 
 
 
-</footer>
+</footer> --}}
 <div class="footer-copyright">
     <div class="title">Copyright © {{ date("Y") }} All Rights Reserved</div>
 </div>

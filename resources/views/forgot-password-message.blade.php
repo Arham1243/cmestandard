@@ -1,32 +1,25 @@
 @extends('layouts.main')
 @section('content')
-    <section class="inner_banner">
+    <div class="full-section">
+        <div class="group3-img">
+            <img src='{{ asset('assets/images/Group 1707479537.png') }}' alt='image' class='imgFluid' loading='lazy'>
+        </div>
         <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-8">
-                    <div class="inner_cont">
-                        <?php App\Helpers\Helper::inlineEditable("h3",["class" => " "],"Forgot Password","INNERCONTENT37",);?>
-                        <div class="inner_link">
-                            <a href="{{ route('index') }}">home</a>
-                            <a href="javascript:;">forgot password</a>
+            <div class="about-us__content">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-12">
+                        <div class="section-content section-content--alt">
+                            <div class="subHeading">Please Check Your Email! </div>
+                            <p> We've sent a password reset link to <strong>{{ $email }}</strong>. Just click the link
+                                in the email
+                                to
+                                reset your password. If you don't see it, make sure to check your spam folder.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-
-
-    <section class="login_form_section">
-        <div class="container">
-            <div class="login_form">
-                <div class="form_heading text-center">
-                    <?php App\Helpers\Helper::inlineEditable("h6",["class" => " "],"Check your inbox for a password reset link. If you don't see it, please check your spam folder.","INNERCONTENT38",);?>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 @endsection
 @section('css')
     <style type="text/css">

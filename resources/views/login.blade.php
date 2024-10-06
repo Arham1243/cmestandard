@@ -66,6 +66,7 @@
                                     </div>
                                     <div class="col-12 mt-2">
                                         <div class="auth__bottom">
+                                            <p><a href="{{ route('forget-password') }}">Forgot Passowrd</a> </p>
                                             <p>Don’t have an account? <a href="{{ route('sign_up') }}">Sign Up</a> </p>
                                         </div>
                                     </div>

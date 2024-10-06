@@ -60,7 +60,7 @@ Route::post('/pay-status', [CartController::class, 'paystatus'])->name('paystatu
 
 // ---------------------------------------Forget Password---------------------------------------
 Route::get('/forget-password', [UserController::class, 'forget_password'])->name('forget-password');
-Route::get('/forgot-password-message', [UserController::class, 'forgot_password_message'])->name('forgot-password-message');
+Route::get('/check-email', [UserController::class, 'forgot_password_message'])->name('forgot-password-message');
 Route::post('/forget-password-post', [UserController::class, 'forget_password_submit'])->name('forget_password_submit');
 Route::get('/forget-password-token/{token}', [UserController::class, 'forget_password_token'])->name('forget-password-token');
 Route::post('/forget-password-reset', [UserController::class, 'forget_password_reset'])->name('forget-password-reset');

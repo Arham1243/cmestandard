@@ -50,6 +50,39 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="statistics pb-5 mb-3">
+            <div class="container">
+                <ul class="statistics-list">
+                    <li class="statistics-list__single">
+                        <div class="number" data-count="{{ $total_doctors > 5 ? $total_doctors - 3 : $total_doctors }}">
+                            {{ $total_doctors > 5 ? $total_doctors - 3 . '+' : $total_doctors }}
+                        </div>
+                        <p>Total Doctors</p>
+                    </li>
+                    <li class="statistics-list__single">
+                        <div class="number"
+                            data-count="{{ $total_trainings > 5 ? $total_trainings - 3 : $total_trainings }}">
+                            {{ $total_trainings > 5 ? $total_trainings - 3 . '+' : $total_trainings }}
+                        </div>
+                        <p>Total Trainings</p>
+                    </li>
+                    <li class="statistics-list__single">
+                        <div class="number"
+                            data-count="{{ $total_credit_hours > 5 ? $total_credit_hours - 3 : $total_credit_hours }}">
+                            {{ $total_credit_hours > 5 ? $total_credit_hours - 3 . '+' : $total_credit_hours }}
+                        </div>
+                        <p>Total Credit Hours</p>
+                    </li>
+                </ul>
+                </script>
+
+            </div>
+        </div>
+
+
+
     </div>
 
 
@@ -70,8 +103,10 @@
 
             <div class="row pt-4">
                 <div class="col-md-5">
-                    <div class="why-cme__img">
-                        <img src='{{ asset('assets/images/Group 1707479605 (1).png') }}' alt='image' class='imgFluid'
+                    <div class="why-cme__img led-img">
+                        <img src='{{ asset('assets/images/Group 1707479605 (1) (1).png') }}' alt='image'
+                            class='imgFluid' loading='lazy'>
+                        <img src='{{ asset('assets/images/web.png') }}' alt='image' class='imgFluid comInner-img'
                             loading='lazy'>
                     </div>
                 </div>
@@ -245,13 +280,15 @@
 
         </div>
     </div>
+
+
     <!-- why-accredited -->
     <div class="why-accre">
         <div class="group2-img" style="display: none;">
             <img src="{{ asset('assets/images/group3.png') }}" alt='image' class='imgFluid' loading='lazy'>
         </div>
         <div class="container-fluid p-0">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center no-gutters g-0">
                 <div class="col-md-5 offset-md-1">
                     <div class="section-content text-light" style="padding: 0;">
                         <h2 class="subHeading">Why Accredited CME</h2>
@@ -278,9 +315,7 @@
                 </div>
                 <div class="col-md-6 pt-5">
                     <div class="why-accre__img">
-                        <img src="{{ asset('assets/images/why-ac.png') }}" alt='image' class='imgFluid'
-                            loading='lazy'>
-                        <img src="{{ asset('assets/images/2333.png') }}" alt='image' class='imgFluid yellow-bg'
+                        <img src="{{ asset('assets/images/why-ac.png') }}" alt='image' class='imgFluid tri-img'
                             loading='lazy'>
                     </div>
 
@@ -288,6 +323,8 @@
             </div>
         </div>
     </div>
+
+
 
 
     <!-- obj-cme -->
@@ -379,32 +416,33 @@
     </div>
 
     <!-- top-doc -->
-    <div class="top-doc">
-        <div class="container-fluid">
-            <div class="section-content text-center">
-                <?php App\Helpers\Helper::inlineEditable('h2', ['class' => 'subHeading'], 'Meet our Top Doctors', 'content19'); ?>
+    @if (!$users->isEmpty())
+        <div class="top-doc">
+            <div class="container-fluid">
+                <div class="section-content text-center">
+                    <?php App\Helpers\Helper::inlineEditable('h2', ['class' => 'subHeading'], 'Meet our Top Doctors', 'content19'); ?>
 
-            </div>
-            <div class="row pt-5 drs-slider">
-                @foreach ($users as $user)
-                    <div class="col-md">
-                        <div class="top-doc__content">
-                            <div class="top-doctors__img">
-                                <img src="{{ asset($user->profile_img ?? 'assets/images/user.png') }}"
-                                    alt=' {{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
-                            </div>
-                            <div class="top-doc__details">
-                                <div class="dr-name">
-                                    {{ $user->title_full_name }}
+                </div>
+                <div class="row pt-5 drs-slider">
+                    @foreach ($users as $user)
+                        <div class="col-md">
+                            <div class="top-doc__content">
+                                <div class="top-doctors__img">
+                                    <img src="{{ asset($user->profile_img ?? 'assets/images/user.png') }}"
+                                        alt=' {{ $user->title_full_name }}' class='imgFluid' loading='lazy'>
                                 </div>
-                                <div class="title"> {{ $user->specialityArea->name ?? '' }}</div>
+                                <div class="top-doc__details">
+                                    <div class="dr-name">
+                                        {{ $user->title_full_name }}
+                                    </div>
+                                    <div class="title"> {{ $user->specialityArea->name ?? '' }}</div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-            {{-- <div class="row pt-5 drs-slider2">
+                    @endforeach
+                </div>
+                {{-- <div class="row pt-5 drs-slider2">
                 <div class="col-md">
                     <div class="top-doc__content">
                         <div class="top-doctors__img">
@@ -559,9 +597,10 @@
 
             </div> --}}
 
-        </div>
+            </div>
 
-    </div>
+        </div>
+    @endif
 
     <!-- faqs -->
     {{-- <div class="faqs">
@@ -597,7 +636,7 @@
     </div> --}}
 
     <!-- reviews -->
-    <div class="reviews">
+    {{-- <div class="reviews">
         <div class="group-img">
             <img src='{{ asset('assets/images/Group 1707479537.png') }}' alt='image' class='imgFluid'
                 loading='lazy'>
@@ -652,7 +691,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
     <!-- contact-form -->
     <div class="contact-form">
@@ -753,8 +792,8 @@
 
         </div>
         <!-- <div class="group-img">
-                                                <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
-                                            </div> -->
+                                                                                                                        <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
+                                                                                                                    </div> -->
     </div>
 @endsection
 @section('css')
@@ -763,9 +802,42 @@
     </style>
 @endsection
 @section('js')
-    <script type="text/javascript">
-        (() => {
-            /*in page js here*/
-        })()
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
+    <script>
+        const counterUp = window.counterUp.default;
+        const counters = document.querySelectorAll('.number');
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCount(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        function startCount(counter) {
+            const countValue = parseInt(counter.getAttribute('data-count'), 10);
+            if (countValue > 5) {
+                counter.textContent = countValue - 3 + '+';
+            } else {
+                counter.textContent = countValue;
+            }
+            counterUp(counter, {
+                duration: 1000,
+            });
+        }
+
+        if (counters.length > 0) {
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        }
     </script>
 @endsection

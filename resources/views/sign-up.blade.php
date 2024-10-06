@@ -105,7 +105,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        @error('email')
+                                        @error('speciality_area_id')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -123,7 +123,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        @error('email')
+                                        @error('speciality_interest_id')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
