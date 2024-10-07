@@ -231,7 +231,7 @@ class AdminDashController extends Controller
                 $message->to($request->email);
                 $message->subject('Welcome To ' . env('APP_NAME'));
             });
-        
+
             $user->is_welcome_email_sent = 1;
             $user->save();
         } catch (\Throwable $th) {
@@ -240,6 +240,29 @@ class AdminDashController extends Controller
 
 
         return redirect()->route('admin.users_listing')->with('notify_success', 'User Added Successfuly!!');
+    }
+    public function send_welcome_email($id)
+    {
+        $user = User::where('id', $id)->first();
+        try {
+            Mail::send('email.welcome-user', [
+                'user' => $user,
+                'logo' => $this->logo
+            ], function ($message) use ($user) {
+                $message->from(env('MAIL_FROM_ADDRESS'));
+                $message->to($user->email);
+                $message->subject('Welcome To ' . env('APP_NAME'));
+            });
+
+            $user->is_welcome_email_sent = 1;
+            $user->save();
+        } catch (\Throwable $th) {
+            \Log::error('Error sending welcome email: ' . $th->getMessage());
+        }
+
+
+        return redirect()->route('admin.users_listing')->with('notify_success', 'A welcome email has been successfully sent to ' . $user->title_full_name . '!');
+
     }
 
     public function edit_user($id)

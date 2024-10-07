@@ -74,6 +74,12 @@
                                                             Homepage
                                                         </a>
                                                     @endif
+                                                    
+                                                    @if ($user->is_welcome_email_sent == 0)
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('admin.send_welcome_email', $user->id) }}"><i
+                                                            class="fa fa-envelope" aria-hidden="true"></i> Send Welcome Email</a>
+                                                            @endif
                                                     <a class="dropdown-item"
                                                         onclick="return confirm('Are you sure you want to delete')"
                                                         href="{{ route('admin.delete_user', $user->id) }}"><i

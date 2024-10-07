@@ -118,6 +118,7 @@ Route::middleware(['admin'])->prefix('admin')->namespace('admin')->group(functio
   Route::get('/add-users', [AdminDashController::class, 'add_users'])->name('admin.add_users');
   Route::post('/create-users', [AdminDashController::class, 'create_users'])->name('admin.create_users');
   Route::get('/edit-users/{id}', [AdminDashController::class, 'edit_user'])->name('admin.edit_user');
+  Route::get('/send-welcome-email/{id}', [AdminDashController::class, 'send_welcome_email'])->name('admin.send_welcome_email');
   Route::post('/edit-users', [AdminDashController::class, 'update_user'])->name('admin.update_user');
   Route::get('/suspend-user/{id}', [AdminDashController::class, 'suspend_user'])->name('admin.suspend_user');
   Route::get('/show-on-homepage-user/{id}', [AdminDashController::class, 'show_on_homepage_user'])->name('admin.show_on_homepage_user');
