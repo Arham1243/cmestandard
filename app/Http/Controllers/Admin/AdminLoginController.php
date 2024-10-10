@@ -52,7 +52,7 @@ class AdminLoginController extends Controller
             
             if(Auth::guard('admin')->user()->type == 1)
            {
-               return redirect()->intended('/')->with('notify_success','You are already logged in as Admin');
+               return redirect()->intended('admin/dashboard')->with('notify_success','You are already logged in as Admin');
            }
            else
            {
