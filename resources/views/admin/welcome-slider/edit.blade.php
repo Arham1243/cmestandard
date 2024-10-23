@@ -12,7 +12,7 @@
 
             </div>
             <div class="user-wrapper">
-                <form id="add-record-form" action="{{ route('admin.updatewelcomeSlider') }}" method="POST"
+            <form id="add-record-form" action="{{ route('admin.updatewelcomeSlider') }}" method="POST"
                     class="main-form mc-b-3" enctype="multipart/form-data">
 
                     @csrf
@@ -38,6 +38,16 @@
                                     value="{{ $welcome_slider->headings }}">
                                 @if ($errors->has('headings'))
                                     <span class="text-danger">{{ $errors->first('headings') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <div class="form-group">
+                                <label> Sub title:</label>
+                                <input type="text" name="subtitle" class="form-control"
+                                    value="{{ $welcome_slider->subtitle }}">
+                                @if ($errors->has('subtitle'))
+                                    <span class="text-danger">{{ $errors->first('subtitle') }}</span>
                                 @endif
                             </div>
                         </div>

@@ -24,7 +24,7 @@
                         <h1 class="banner-heading">
                             {!! $remainingHeading !!} <span>{{ $lastWord }}</span>
                         </h1>
-
+                        <div class="title mb-3">{{ $welcome_slider->subtitle }}</div>
                         <p>{{ $welcome_slider->long_desc }}</p>
                         <div class="banner-btn"><a href="{{ route('sign_up') }}" class="themeBtn">get started</a></div>
                     </div>
@@ -753,8 +753,8 @@
 
         </div>
         <!-- <div class="group-img">
-                                                <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
-                                            </div> -->
+                                                    <img src="{{ asset('assets/images/Group 1707479537.png') }}" alt="image" class="imgFluid" loading="lazy">
+                                                </div> -->
     </div>
 @endsection
 @section('css')

@@ -19,14 +19,15 @@
         display: none;
     }
     .banner-heading {
-        font-size: 44px;
+        font-size: 40px;
     }
     .banner-content .title {
-        font-size: 26px;
+        font-size: 21px;
     }
     .banner-content p {
-        font-size: 15px;
+        font-size: 12px;
         padding: 0;
+        margin: 0;!i;!;
     }
     .banner {
         width: 100%;

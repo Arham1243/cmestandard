@@ -74,6 +74,7 @@
                                             </td>
                                         </tr>
                                         <?php $i++; ?>
+                                        
                                     @endforeach
                                 </tbody>
                             </table>

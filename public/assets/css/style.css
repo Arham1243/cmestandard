@@ -408,11 +408,11 @@ i.bx {
 }
 
 .banner-content .title {
-    color: #333333;
     font-size: 31px;
     font-weight: 800;
-    margin-bottom: -6px;
+    margin-bottom: 0;
     font-family: var(--heading-font);
+    opacity: 0.75;
 }
 
 .banner-content p {
@@ -435,7 +435,7 @@ i.bx {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1.75rem;
+    margin-top: 1.5rem;
 }
 
 .banner-heading span {
@@ -447,6 +447,7 @@ i.bx {
     font-weight: 700;
     margin-bottom: 0;
     color: var(--color-secondary);
+    line-height: 1.1;
 }
 
 /* .about-us */
@@ -1116,6 +1117,7 @@ ul.footer-icons i:hover {
 .why-accre {
     padding: 4rem 0;
     background: var(--color-secondary);
+    overflow: hidden;
 }
 
 .why-accre--alt .why-accre__pra {

@@ -264,12 +264,14 @@ class SiteSettingsController extends Controller
             'long_desc' => 'required',
             // 'video_link' => 'required',
             'subHeading' => 'required',
+            'subtitle' => 'required',
         ]);
         $image = imagetable::where('id', $request->id)->where('table_name', 'welcome-slider')->update(
             [
                 'headings' => $request->headings,
                 'subHeading' => $request->subHeading,
                 'long_desc' => $request->long_desc,
+                'subtitle' => $request->subtitle,
                 // 'video_link' => $request->video_link,
             ]
         );
