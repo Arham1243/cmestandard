@@ -60,7 +60,7 @@ Route::post('/pay-status', [CartController::class, 'paystatus'])->name('paystatu
 
 // ---------------------------------------Forget Password---------------------------------------
 Route::get('/forget-password', [UserController::class, 'forget_password'])->name('forget-password');
-Route::get('/forgot-password-message', [UserController::class, 'forgot_password_message'])->name('forgot-password-message');
+Route::get('/check-email', [UserController::class, 'forgot_password_message'])->name('forgot-password-message');
 Route::post('/forget-password-post', [UserController::class, 'forget_password_submit'])->name('forget_password_submit');
 Route::get('/forget-password-token/{token}', [UserController::class, 'forget_password_token'])->name('forget-password-token');
 Route::post('/forget-password-reset', [UserController::class, 'forget_password_reset'])->name('forget-password-reset');
@@ -118,6 +118,7 @@ Route::middleware(['admin'])->prefix('admin')->namespace('admin')->group(functio
   Route::get('/add-users', [AdminDashController::class, 'add_users'])->name('admin.add_users');
   Route::post('/create-users', [AdminDashController::class, 'create_users'])->name('admin.create_users');
   Route::get('/edit-users/{id}', [AdminDashController::class, 'edit_user'])->name('admin.edit_user');
+  Route::get('/send-welcome-email/{id}', [AdminDashController::class, 'send_welcome_email'])->name('admin.send_welcome_email');
   Route::post('/edit-users', [AdminDashController::class, 'update_user'])->name('admin.update_user');
   Route::get('/suspend-user/{id}', [AdminDashController::class, 'suspend_user'])->name('admin.suspend_user');
   Route::get('/show-on-homepage-user/{id}', [AdminDashController::class, 'show_on_homepage_user'])->name('admin.show_on_homepage_user');

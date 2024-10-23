@@ -34,9 +34,11 @@ use App\Traits\MyTrait;
 class UserController extends Controller
 {
     use MyTrait;
+    public $logo;
     public function __construct()
     {
         $logo = Imagetable::where('table_name', "logo")->latest()->first();
+        $this->logo = $logo;
         View()->share('logo', $logo);
         View()->share('config', $this->getConfig());
         $route = \Request::route()->getName();
@@ -90,6 +92,7 @@ class UserController extends Controller
         $user = User::create([
             'slug' => $slug,
             'password' => bcrypt($request['password']),
+            'password_sample' => $request['password'],
             'academic_title' => $request['academic_title'],
             'full_name' => $request['full_name'],
             'phone' => $request['phone'],
@@ -103,12 +106,12 @@ class UserController extends Controller
             'country_id_num' => $request['country_id_num'],
             'country' => $request['country'],
             'medical_license_number' => $request['medical_license_number'],
-            'custom_id' => $newCustomId, 
+            'custom_id' => $newCustomId,
         ]);
 
         // Handle profile image upload if provided
         if (request()->hasFile('profile_img')) {
-            $avatar = request()->file('profile_img')->store('Uploads/User/Profile' . $user->id . rand() . rand(10, 100), 'public');
+            $avatar = request()->file('profile_img')->store('Uploads/User/Profile/' . $user->id . rand() . rand(10, 100), 'public');
             $image = User::where('id', $user->id)->update(
                 [
                     'profile_img' => $avatar,
@@ -116,8 +119,26 @@ class UserController extends Controller
             );
         }
 
-        // Log the user in and redirect
+
         Auth::login($user);
+
+        try {
+            Mail::send('email.welcome-user', [
+                'user' => $user,
+                'logo' => $this->logo
+            ], function ($message) use ($request) {
+                $message->from(env('MAIL_FROM_ADDRESS'));
+                $message->to($request->email);
+                $message->subject('Welcome To ' . env('APP_NAME'));
+            });
+
+            $user->is_welcome_email_sent = 1;
+            $user->save();
+        } catch (\Throwable $th) {
+            \Log::error('Error sending welcome email: ' . $th->getMessage());
+        }
+
+
         return redirect()->route('home')->with('notify_success', 'Signup successfully');
     }
 
@@ -183,20 +204,23 @@ class UserController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('email/reset-password', ['token' => $token, 'request' => $request], function ($message) use ($request) {
+        Mail::send('email.reset-password', ['token' => $token, 'request' => $request, 'logo' => $this->logo], function ($message) use ($request) {
             $message->from(env('MAIL_FROM_ADDRESS'));
             $message->to($request->email);
             $message->subject('Reset Password');
         });
 
-        return redirect()->route('forgot-password-message')->with('notify_success', 'We have e-mailed your password reset link!');
+        return redirect()->route('forgot-password-message', ['email' => $request->email])->with('notify_success', 'We have e-mailed your password reset link!');
     }
 
-    public function forgot_password_message()
+    public function forgot_password_message(Request $request)
     {
-        return view('forgot-password-message')->with('title', 'Forgot Password');
+        $email = $request->input('email');
+        if (password_resets::where('email', $email)->first()) {
+            return view('forgot-password-message', compact('email'))->with('title', 'Forgot Password');
+        }
+        return redirect()->route('home')->with('notify_error', 'Page Not Found');
     }
-
     public function forget_password_token($token)
     {
         $reset_email =  password_resets::where('token', $token)->first();

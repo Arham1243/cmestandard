@@ -1,53 +1,60 @@
 @extends('layouts.main')
 @section('content')
-    <section class="inner_banner">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-5">
-                    <div class="inner_cont">
-                        <?php App\Helpers\Helper::inlineEditable("h3",["class" => " "],"My account","INNERCONTENT39",);?>
-                        <div class="inner_link">
-                            <a href="{{ route('index') }}">home</a>
-                            <a href="javascript:;">My account</a>
+    <div class="page-title">
+        <div class="page-title__img">
+            <img src="{{ asset('assets/images/banner-new.png') }}" alt="image" class="imgFluid">
+        </div>
+        <div class="page-title__content">
+            <h1 class="title">Reset Your Password</h1>
+        </div>
+    </div>
+
+
+
+    <!-- login -->
+    <div class="login">
+        <div class="auth mar-y">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="auth__form">
+                            <div class="section-content text-center mb-4">
+                                <h2 class="subHeading">Enter New Password</h2>
+                            </div>
+                            <form action="{{ route('forget-password-reset') }}" method="POST">
+                                @csrf
+                                <input name="email" value="{{ $reset_email->email }}" type="hidden">
+                                <input name="token" value="{{ $token }}" type="hidden">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="inputField">
+                                            <label class="title">Password</label>
+                                            <div class="position-relative">
+                                                <input type="password" placeholder="Enter Password :" class="passwordInput"
+                                                    id="passwordInput" name="password" required>
+
+                                                <span class="icon showPassword" onclick="showHide()">
+                                                    <i class='bx bxs-show' id="toggleIcon"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        @error('password')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit"
+                                            class="themeBtn themeBtn--full justify-content-center">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-
-
-    <section class="login_form_section">
-        <div class="container">
-            <div class="login_form">
-                <div class="form_heading">
-                    <?php App\Helpers\Helper::inlineEditable("h3",["class" => " "],"Enter New Password","INNERCONTENT40",);?>
-                </div>
-                <form action="{{ route('forget-password-reset') }}" method="POST">
-                    @csrf
-                    <input name="email" value="{{ $reset_email->email }}" type="hidden">
-                            <input name="token" value="{{ $token }}" type="hidden">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="drop_form_input">
-                                <label for="">Password<s>*</s></label>
-                                <input type="password" placeholder="********" name="password" required >
-                                @error('password')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="drop_form_btn">
-                                <button class="themebtn">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+    </div>
 @endsection
 @section('css')
     <style type="text/css">

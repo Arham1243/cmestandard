@@ -57,9 +57,14 @@
                                 style="max-width:670px; background:#fff; border-radius:3px;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);padding:2rem 40px;">
                                 <!-- Logo -->
                                 <tr>
-                                    <td style="text-align:center;">
-                                        <img src="{{ asset($logo->img_path) }}" alt="CME Standard Logo"
-                                            style="max-width: 200px; margin-bottom: 20px;">
+                               <td style="text-align: center">
+                                        <a target="_blank" href="{{ env('APP_URL') }}">
+                                            <img src="{{ asset($logo->img_path) }}" alt="CME Standard Logo"
+                                                style="
+                                                    max-width: 200px;
+                                                    margin-bottom: 20px;
+                                                " />
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -186,7 +191,7 @@
                                                         Certificate</td>
                                                     <td
                                                         style="padding: 10px; border-bottom: 1px solid #ededed; width: 50%; font-weight:500; color:rgba(0,0,0,.64);">
-                                                        <a style="color:#D0962A;"
+                                                        <a style="color:#D0962A;  text-decoration: none !important;"
                                                             href="{{ asset($training->certificate) }}">View
                                                             Certificate</a>
                                                     </td>

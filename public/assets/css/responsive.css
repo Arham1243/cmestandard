@@ -27,7 +27,7 @@
     .banner-content p {
         font-size: 12px;
         padding: 0;
-        margin: 0;!i;!;
+        margin: 0;
     }
     .banner {
         width: 100%;
@@ -55,17 +55,30 @@
         padding: 0 1rem;
     }
     .section-content .subHeading {
-        font-size: 1.55rem;
+        font-size: 1.75rem;
         width: 100% !important;
+        line-height: 1.5;
     }
     .section-content p {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
         padding: 0;
+        line-height: 1.5;
+    }
+    .statistics.pb-5.mb-3 {
+        margin: 2rem 0 0 !important;
+        padding: 0 1rem !important;
+    }
+    .statistics-list {
+        width: 100%;
+        justify-content: center;
+    }
+    .statistics-list__single {
+    width: 100%;
     }
     .why-cme__img {
-        height: 100%;
-        width: 100%;
-        position: static;
+        /* height: 100%; */
+        /* width: 100%; */
+        position: relative;
     }
     li.why-accre__list,
     .why-accre__pra > div {
@@ -83,14 +96,6 @@
     }
     .why-accre .section-content .subHeading {
         margin-left: 1rem;
-    }
-    .why-accre__img :first-child {
-        height: 280px;
-    }
-    .why-accre__img :last-child {
-        width: 136px;
-        height: 136px;
-        top: 174px;
     }
 
     .msg-form__contant {
@@ -318,5 +323,4 @@
     .obj-boxs {
         margin-bottom: 5rem;
     }
-
 }

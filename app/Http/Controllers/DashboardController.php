@@ -117,7 +117,7 @@ class DashboardController extends Controller
 
         if (request()->hasFile('avatar')) {
             $avatar = request()->file('avatar')->store('Uploads/User/avatar' . $request->id . rand() . rand(10, 100), 'public');
-            $image = User::where('id', $request->id)->update(
+            $image = User::where('id', Auth::id())->update(
 
                 [
 

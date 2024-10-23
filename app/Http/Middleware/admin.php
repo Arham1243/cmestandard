@@ -11,6 +11,7 @@ class admin
     public function handle(Request $request, Closure $next)
     {
         if( ! auth('admin')->user()){
+            $request->session()->put('url.intended', $request->url());
             return redirect()->route('admin.login')->with('notify_error','You need to login before accessing Admin Dashboard');
         } else {
             return $next($request);

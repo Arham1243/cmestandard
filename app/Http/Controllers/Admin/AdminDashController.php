@@ -28,9 +28,11 @@ use Str;
 class AdminDashController extends Controller
 {
     use MyTrait;
+    public $logo;
     public function __construct()
     {
         $logo = Imagetable::where('table_name', 'logo')->latest()->first();
+        $this->logo = $logo;
         View()->share('logo', $logo);
         View()->share('config', $this->getConfig());
     }
@@ -159,26 +161,108 @@ class AdminDashController extends Controller
     public function users_listing()
     {
         // $users = User::with("get_roles_users")->get();
-        $users = User::get();
+        $users = User::latest()->get();
         return view('admin.users-management.list')->with('title', 'User Management')->with('user_mgmmenu', true)->with(compact('users'));
     }
 
     public function add_users()
     {
-        $users = User::get();
-        return view('admin.users-management.add')->with('title', 'Add New User')->with('user_mgmmenu', true)->with(compact('users'));
+        $speciality_interests = Users_speciality_interests::where("is_active", 1)
+            ->orderBy('name', 'asc')
+            ->get();
+        $speciality_areas = Users_speciality_areas::where("is_active", 1)
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $data = compact('speciality_interests', 'speciality_areas');
+        return view('admin.users-management.add')->with('title', 'Add New User')->with('user_mgmmenu', true)->with($data);
     }
 
     public function create_users(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'fullname' => 'required|max:255',
-            'password' => 'required|max:255',
-            'password_confirmation' => 'required|same:password|max:255',
-            'email' => 'required|unique:users|max:255',
-            'is_active' => 'required',
 
+
+    {
+        $validator = $request->validate([
+            'email' => 'required|email|unique:users|max:255',
         ]);
+        // Generate a slug for the user
+        $slug = $this->slug_maker($request->input('full_name'), User::class);
+
+        // Get the last custom_id, or set to 999 if there are no users yet
+        $lastCustomId = User::max('custom_id') ?? 999;
+        $newCustomId = $lastCustomId + 1;
+
+        $user = User::create([
+            'slug' => $slug,
+            'password' => bcrypt($request['password']),
+            'password_sample' => $request['password'],
+            'academic_title' => $request['academic_title'],
+            'full_name' => $request['full_name'],
+            'phone' => $request['phone'],
+            'email' => $request['email'],
+            'speciality_area_id' => $request['speciality_area_id'],
+            'speciality_interest_id' => $request['speciality_interest_id'],
+            'qualification' => $request['qualification'],
+            'institution_name' => $request['institution_name'],
+            'institution_city' => $request['institution_city'],
+            'birthday' => $request['birthday'],
+            'country_id_num' => $request['country_id_num'],
+            'country' => $request['country'],
+            'medical_license_number' => $request['medical_license_number'],
+            'custom_id' => $newCustomId,
+        ]);
+
+        // Handle profile image upload if provided
+        if (request()->hasFile('profile_img')) {
+            $avatar = request()->file('profile_img')->store('Uploads/User/Profile/' . $user->id . rand() . rand(10, 100), 'public');
+            $image = User::where('id', $user->id)->update(
+                [
+                    'profile_img' => $avatar,
+                ]
+            );
+        }
+
+        try {
+            Mail::send('email.welcome-user', [
+                'user' => $user,
+                'logo' => $this->logo
+            ], function ($message) use ($request) {
+                $message->from(env('MAIL_FROM_ADDRESS'));
+                $message->to($request->email);
+                $message->subject('Welcome To ' . env('APP_NAME'));
+            });
+
+            $user->is_welcome_email_sent = 1;
+            $user->save();
+        } catch (\Throwable $th) {
+            \Log::error('Error sending welcome email: ' . $th->getMessage());
+        }
+
+
+        return redirect()->route('admin.users_listing')->with('notify_success', 'User Added Successfuly!!');
+    }
+    public function send_welcome_email($id)
+    {
+        $user = User::where('id', $id)->first();
+        try {
+            Mail::send('email.welcome-user', [
+                'user' => $user,
+                'logo' => $this->logo
+            ], function ($message) use ($user) {
+                $message->from(env('MAIL_FROM_ADDRESS'));
+                $message->to($user->email);
+                $message->subject('Welcome To ' . env('APP_NAME'));
+            });
+
+            $user->is_welcome_email_sent = 1;
+            $user->save();
+        } catch (\Throwable $th) {
+            \Log::error('Error sending welcome email: ' . $th->getMessage());
+        }
+
+
+        return redirect()->route('admin.users_listing')->with('notify_success', 'A welcome email has been successfully sent to ' . $user->title_full_name . '!');
+
     }
 
     public function edit_user($id)
@@ -251,7 +335,7 @@ class AdminDashController extends Controller
             $user->save();
             return redirect()->route('admin.users_listing')->with('notify_success', 'User Suspended Successfuly!!');
         }
-    }    
+    }
     public function show_on_homepage_user($id)
     {
         $user = User::where('id', $id)->first();
@@ -264,7 +348,7 @@ class AdminDashController extends Controller
             $user->save();
             return redirect()->route('admin.users_listing')->with('notify_success', 'The user has been successfully removed from the homepage.');
         }
-    }    
+    }
 
     public function testimonial_listing()
     {

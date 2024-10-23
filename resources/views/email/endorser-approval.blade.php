@@ -57,9 +57,14 @@
                                 style="max-width:670px; background:#fff; border-radius:3px;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);padding:2rem 40px;">
                                 <!-- Logo -->
                                 <tr>
-                                    <td style="text-align:center;">
-                                        <img src="{{ asset($logo->img_path) }}" alt="CME Standard Logo"
-                                            style="max-width: 200px; margin-bottom: 20px;">
+                               <td style="text-align: center">
+                                        <a target="_blank" href="{{ env('APP_URL') }}">
+                                            <img src="{{ asset($logo->img_path) }}" alt="CME Standard Logo"
+                                                style="
+                                                    max-width: 200px;
+                                                    margin-bottom: 20px;
+                                                " />
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -200,7 +205,7 @@
                                 <tr>
                                     <td style="padding: 20px 15px; text-align:center;">
                                         <a href="{{ route('change_training_status', ['id' => $training->id, 'status' => 'endorser_approved']) }}"
-                                            style="display:inline-block; background-color:#D0962A; color:#ffffff; padding:10px 20px; text-decoration:none; font-family:'Rubik',sans-serif; font-size:16px; border-radius:5px;">
+                                            style="display:inline-block; background-color:#D0962A; color:#ffffff; padding:10px 20px;  text-decoration: none !important; font-family:'Rubik',sans-serif; font-size:16px; border-radius:5px;">
                                             CME Attendance Confirmation
                                         </a>
                                     </td>

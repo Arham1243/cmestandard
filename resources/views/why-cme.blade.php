@@ -34,8 +34,11 @@
 
             <div class="row pt-4">
                 <div class="col-md-5">
-                    <div class="why-cme__img">
-                        <img src='{{ asset('assets/images/Group 1707479605 (1).png') }}' alt='image' class='imgFluid' loading='lazy'>
+                    <div class="why-cme__img led-img">
+                        <img src='{{ asset('assets/images/Group 1707479605 (1) (1).png') }}' alt='image' class='imgFluid'
+                            loading='lazy'>
+                        <img src='{{ asset('assets/images/web.png') }}' alt='image' class='imgFluid comInner-img'
+                            loading='lazy'>  
                     </div>
                 </div>
                 <div class="col-md-7 pt-2">

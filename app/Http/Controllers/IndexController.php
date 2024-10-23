@@ -104,12 +104,14 @@ class IndexController extends Controller
     {
         $testimonials = Testimonial::where("is_active", 1)->latest()->get();
         $welcome_slider = Imagetable::where("table_name", 'welcome-slider')->where("is_active_img", 1)->latest()->first();
+        $total_doctors = User::where("is_active", 1)->count();
+        $total_trainings = Doctor_activity::whereIn("training_status", ['endorser_approved', 'admin_approved'])->count();
+        $total_credit_hours = (int) Doctor_activity::whereIn("training_status", ['endorser_approved', 'admin_approved'])->pluck('credit_hours')->sum();
         $users = User::where("show_on_homepage", 1)->get();
 
 
         $faqs = Faq::where("is_active", 1)->limit(6)->latest()->get();
-
-        $data = compact('testimonials', 'faqs', 'welcome_slider','users');
+        $data = compact('testimonials', 'faqs', 'welcome_slider', 'users', 'total_doctors', 'total_trainings', 'total_credit_hours',);
         return view('index')->with('title', 'Home')->with($data);
     }
 

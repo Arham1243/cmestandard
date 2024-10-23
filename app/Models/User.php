@@ -93,4 +93,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Doctor_activity::class);
     }
+
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->trainings()->delete();
+        });
+    }
 }
