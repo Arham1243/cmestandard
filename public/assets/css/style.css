@@ -1323,7 +1323,7 @@ body .contact-heading * {
     position: relative;
     /* top: 142px; */
     z-index: 30;
-    padding: 7rem 0;
+    padding: 0 0 5rem;
 }
 
 .msg-form {

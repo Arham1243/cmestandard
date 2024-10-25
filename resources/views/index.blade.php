@@ -52,7 +52,7 @@
         </div>
 
 
-        <div class="statistics pb-5 mb-3">
+        {{-- <div class="statistics pb-5 mb-3">
             <div class="container">
                 <ul class="statistics-list">
                     <li class="statistics-list__single">
@@ -79,7 +79,7 @@
                 </script>
 
             </div>
-        </div>
+        </div> --}}
 
 
 
@@ -92,7 +92,7 @@
                 <div class="section-content">
                     <div class="heading">Why CME</div>
                     <div class="subHeading w-75 mx-auto">Why You Should Choose
-                        CME Standard as your Companion?</div>
+                        CME Standard as your Career Companion?</div>
                     <p>Continuing Medical Education (CME) is essential for physicians throughout their careers for several
                         important reasons:</p>
 
@@ -416,7 +416,7 @@
     </div>
 
     <!-- top-doc -->
-    @if (!$users->isEmpty())
+    {{-- @if (!$users->isEmpty())
         <div class="top-doc">
             <div class="container-fluid">
                 <div class="section-content text-center">
@@ -595,12 +595,12 @@
                 </div>
 
 
-            </div> --}}
+            </div> 
 
             </div>
 
         </div>
-    @endif
+    @endif --
 
     <!-- faqs -->
     {{-- <div class="faqs">
