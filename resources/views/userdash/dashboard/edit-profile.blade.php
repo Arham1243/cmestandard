@@ -224,7 +224,7 @@
                         <div class="col-lg-12 col-md-12 col-12">
                             <div class="form-group">
                                 <label><i class="fa fa-pencil"></i> Bio <span>*</span></label>
-                                <textarea rows="6" name="bio" required class="form-control">{{ $user->bio }}</textarea>
+                                <textarea rows="6" name="bio" class="form-control">{{ $user->bio }}</textarea>
                                 @if ($errors->has('bio'))
                                     <span class="text-danger">{{ $errors->first('bio') }}</span>
                                 @endif

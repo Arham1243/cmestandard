@@ -29,69 +29,59 @@
                             <form action="{{ route('sign-up-submit') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="inputField">
-                                                    <label class="title">Title <span class="text-danger">*</span>:</label>
-                                                    @php
-                                                        $academic_titles = [
-                                                            'Dr.',
-                                                            'Prof.',
-                                                            'Asst. Prof.',
-                                                            'Asoc. Prof.',
-                                                        ];
-                                                    @endphp
-                                                    <select name="academic_title" required class="text-capitalize px-3">
-                                                        <option value="" disabled selected>Select</option>
-                                                        @foreach ($academic_titles as $academic_title)
-                                                            <option value="{{ $academic_title }}">
-                                                                {{ $academic_title }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                @error('academic_title')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="inputField">
-                                                    <label class="title">Full Name <span
-                                                            class="text-danger">*</span>:</label>
-                                                    <input autocomplete="off"  value="{{ old('full_name') }}" type="text" placeholder=""
-                                                        name="full_name" required>
-
-                                                </div>
-                                                @error('full_name')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-md-6">
                                         <div class="inputField">
-                                            <label class="title">Phone:</label>
-                                            <input autocomplete="off"  value="{{ old('phone') }}" type="text" placeholder="" name="phone">
-
+                                            <label class="title">Title <span class="text-danger">*</span>:</label>
+                                            @php
+                                                $academic_titles = ['Dr.', 'Prof.', 'Asst. Prof.', 'Asoc. Prof.'];
+                                            @endphp
+                                            <select name="academic_title" required class="text-capitalize px-3">
+                                                <option value="" disabled selected>Select</option>
+                                                @foreach ($academic_titles as $academic_title)
+                                                    <option value="{{ $academic_title }}">
+                                                        {{ $academic_title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        @error('phone')
+                                        @error('academic_title')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-md-6">
+                                        <div class="inputField">
+                                            <label class="title">Full Name <span class="text-danger">*</span>:</label>
+                                            <input autocomplete="off" value="{{ old('full_name') }}" type="text"
+                                                placeholder="" name="full_name" required>
+
+                                        </div>
+                                        @error('full_name')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Email <span class="text-danger">*</span>:</label>
-                                            <input autocomplete="off"  value="{{ old('email') }}" type="email" placeholder="" name="email"
-                                                required>
+                                            <input autocomplete="off" value="{{ old('email') }}" type="email"
+                                                placeholder="" name="email" required>
 
                                         </div>
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-md-6">
+                                        <div class="inputField">
+                                            <label class="title">Phone:</label>
+                                            <input autocomplete="off" value="{{ old('phone') }}" type="text"
+                                                placeholder="" name="phone">
+
+                                        </div>
+                                        @error('phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Select Speciality Area <span
                                                     class="text-danger">*</span>:</label>
@@ -109,7 +99,7 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Select Speciality Interest <span
                                                     class="text-danger">*</span>:</label>
@@ -127,101 +117,99 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Qualifications <span class="text-danger">*</span>:</label>
 
 
-                                            <input autocomplete="off"  value="{{ old('qualification') }}" type="text" placeholder=""
-                                                name="qualification" required>
+                                            <input autocomplete="off" value="{{ old('qualification') }}" type="text"
+                                                placeholder="" name="qualification" required>
                                         </div>
                                         @error('Qualifications')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Country ID Number
                                                 <span class="text-danger">*</span>:</label>
 
 
-                                            <input autocomplete="off"  value="{{ old('country_id_num') }}" type="number" placeholder=""
-                                                name="country_id_num" required>
+                                            <input autocomplete="off" value="{{ old('country_id_num') }}" type="number"
+                                                placeholder="" name="country_id_num" required>
                                         </div>
                                         @error('country_id_num')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Country <span class="text-danger">*</span>:</label>
 
 
-                                            <input autocomplete="off"  value="{{ old('country') }}" type="text" placeholder=""
-                                                name="country">
+                                            <input autocomplete="off" value="{{ old('country') }}" type="text"
+                                                placeholder="" name="country">
                                         </div>
                                         @error('country')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Medical practice license Number
                                                 <span class="text-danger">*</span>:</label>
 
 
-                                            <input autocomplete="off"  value="{{ old('medical_license_number') }}" type="text"
-                                                placeholder="" name="medical_license_number" required>
+                                            <input autocomplete="off" value="{{ old('medical_license_number') }}"
+                                                type="text" placeholder="" name="medical_license_number" required>
 
                                         </div>
                                         @error('medical_license_number')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
-                                    <div class="col-lg-6">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Institution Name <span
                                                     class="text-danger">*</span>:</label>
-                                            <input autocomplete="off"  value="{{ old('institution_name') }}" type="text" placeholder=""
-                                                name="institution_name" required>
+                                            <input autocomplete="off" value="{{ old('institution_name') }}"
+                                                type="text" placeholder="" name="institution_name" required>
 
                                         </div>
                                         @error('institution_name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Institution City <span
                                                     class="text-danger">*</span>:</label>
-                                            <input autocomplete="off"  value="{{ old('institution_city') }}" type="text" placeholder=""
-                                                name="institution_city" required>
+                                            <input autocomplete="off" value="{{ old('institution_city') }}"
+                                                type="text" placeholder="" name="institution_city" required>
 
                                         </div>
                                         @error('institution_city')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Birthday <span class="text-danger">*</span>:</label>
-                                            <input autocomplete="off"  autocomplete="off"  value="{{ old('birthday') }}" type="date" placeholder=""
-                                                name="birthday" required>
+                                            <input autocomplete="off" autocomplete="off" value="{{ old('birthday') }}"
+                                                type="date" placeholder="" name="birthday" required>
 
                                         </div>
                                         @error('institution_city')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-
-
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <div class="inputField">
                                             <label class="title">Password <span class="text-danger">*</span>:</label>
                                             <div class="position-relative">
-                                                <input autocomplete="off"  autocomplete="off"  type="password" placeholder="" class="passwordInput"
-                                                    id="passwordInput" name="password" required>
+                                                <input autocomplete="off" autocomplete="off" type="password"
+                                                    placeholder="" class="passwordInput" id="passwordInput"
+                                                    name="password" required>
 
                                                 <span class="icon showPassword" onclick="showHide()">
                                                     <i class='bx bxs-show' id="toggleIcon"></i>
@@ -240,7 +228,7 @@
                                                 <img src="{{ asset('assets/images/user.png') }}" alt="image"
                                                     class="imgFluid profile-img" loading="lazy">
                                             </label>
-                                            <input autocomplete="off"  type="file" name="profile_img" id="profile-img"
+                                            <input autocomplete="off" type="file" name="profile_img" id="profile-img"
                                                 onchange="thumb(this);" class="d-none" required>
                                             <div class="placeholder-user__name">Profile Image</div>
                                             @error('profile_img')
