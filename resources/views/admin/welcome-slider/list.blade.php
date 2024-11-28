@@ -60,19 +60,7 @@
                                                         href="{{ route('admin.editwelcomeSlider', $new->id) }}"><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                         Edit</a>
-                                                    <a class="dropdown-item" onclick="return confirm('Are You sure to delete This Slider?')"
-                                                        href="{{ route('admin.deletewelcomeSlider', $new->id) }}"><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                        Delete</a>
-                                                    @if ($new->is_active_img == 1)
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('admin.suspendwelcomeSlider', $new->id) }}"><i
-                                                                class="fa fa-ban" aria-hidden="true"></i> In Active</a>
-                                                    @else
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('admin.suspendwelcomeSlider', $new->id) }}"><i
-                                                                class="fa fa-ban" aria-hidden="true"></i> Activate</a>
-                                                    @endif
+                                                   
                                                 </div>
                                             </div>
                                         </td>

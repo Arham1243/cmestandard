@@ -11,20 +11,8 @@ use App\Models\Users_speciality_areas;
 use App\Models\Doctor_activity;
 use App\Models\User;
 use App\Models\Admin;
-use Auth;
-use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
 use Dompdf\Dompdf;
-use Dompdf\Options;
-use Illuminate\Support\Facades\Storage;
-use Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Http;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Mpdf\Mpdf;
-use Imagick;
 
 
 class IndexController extends Controller
@@ -36,12 +24,8 @@ class IndexController extends Controller
 
         $logo = Imagetable::where('table_name', "logo")->latest()->first();
         $this->logo = $logo;
-        $route = \Request::route()->getName();
-        $banner = Imagetable::where('table_name', $route)->where('type', 2)->where('is_active_img', 1)->first();
-
         View()->share('logo', $logo);
         View()->share('config', $this->getConfig());
-        View()->share('banner', $banner);
     }
 
     public function about_us()
