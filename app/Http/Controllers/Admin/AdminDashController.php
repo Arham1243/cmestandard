@@ -273,7 +273,12 @@ class AdminDashController extends Controller
 
     public function delete_user($id)
     {
-        $user = User::where('id', $id)->delete();
+        $user = User::find($id);
+        $user->trainings->each(function($training) {
+            $training->delete();
+        });
+        $user->delete();
+     
         return redirect()->route('admin.users_listing')->with('notify_success', 'User Deleted Successfuly!!');
     }
 
