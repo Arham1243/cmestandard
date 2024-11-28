@@ -214,7 +214,7 @@ class AdminDashController extends Controller
 
         // Handle profile image upload if provided
         if (request()->hasFile('profile_img')) {
-            $avatar = request()->file('profile_img')->store('Uploads/User/Profile/' . $user->id . rand() . rand(10, 100), 'public');
+            $avatar = request()->file('profile_img')->store('Uploads/User/Profile/' . rand() . rand(10, 100), 'public');
             $image = User::where('id', $user->id)->update(
                 [
                     'profile_img' => $avatar,
@@ -262,7 +262,6 @@ class AdminDashController extends Controller
 
 
         return redirect()->route('admin.users_listing')->with('notify_success', 'A welcome email has been successfully sent to ' . $user->title_full_name . '!');
-
     }
 
     public function edit_user($id)
