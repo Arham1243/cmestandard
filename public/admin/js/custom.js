@@ -1,3 +1,42 @@
+// Bulk Action
+document.addEventListener("DOMContentLoaded", function () {
+    const selectAllCheckbox = document.getElementById("select-all");
+
+    function initializeBulkActionCheckboxes() {
+        const itemCheckboxes = document.querySelectorAll(".bulk-item");
+
+        if (itemCheckboxes && selectAllCheckbox) {
+            function toggleSelectAll() {
+                const isChecked = selectAllCheckbox.checked;
+                itemCheckboxes.forEach(function (checkbox) {
+                    checkbox.checked = isChecked;
+                });
+            }
+
+            function handleItemCheckboxChange() {
+                const allChecked = Array.from(itemCheckboxes).every(
+                    (checkbox) => checkbox.checked
+                );
+                selectAllCheckbox.checked = allChecked;
+            }
+
+            // Attach event listeners to checkboxes
+            selectAllCheckbox.addEventListener("change", toggleSelectAll);
+            itemCheckboxes.forEach(function (checkbox) {
+                checkbox.addEventListener("change", handleItemCheckboxChange);
+            });
+        }
+    }
+
+    // Initialize the checkboxes for the first time
+    initializeBulkActionCheckboxes();
+
+    // If you're using DataTables, listen for the draw event and reinitialize the checkboxes
+    $("#user-table").on("draw.dt", function () {
+        initializeBulkActionCheckboxes();
+    });
+});
+
 $(".custom-select").each(function () {
     var $this = $(this),
         numberOfOptions = $this.children("option").length,
@@ -79,7 +118,14 @@ $(".custom-select").each(function () {
 
 $(document).ready(function () {
     $(".date-picker").datepicker();
-    $("#user-table").DataTable();
+    $("#user-table").DataTable({
+        columnDefs: [
+            {
+                targets: "no-sort", 
+                orderable: false, 
+            },
+        ],
+    });
 
     // function generateNotification(messageType, message, _url) {
     //     if (!_url) {
@@ -315,8 +361,7 @@ function readURL(input, targetId) {
     }
 }
 
-
-$(document).ready(function() {
-    var selected_option = $('.is-selected').html().trim()
-    var selected_value = $('.select-styled').html(selected_option)
- });
+$(document).ready(function () {
+    var selected_option = $(".is-selected").html().trim();
+    var selected_value = $(".select-styled").html(selected_option);
+});

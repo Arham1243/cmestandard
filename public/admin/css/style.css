@@ -2222,3 +2222,23 @@ li.heading {}
     line-height: 1;
 }
 /* placeholder */
+th.no-sort::before,
+th.no-sort::after{
+    display: none !important; 
+}
+.selection input[type=checkbox] {scale: 1.34;cursor: pointer;}
+.form-fields .field {
+    border: 1px solid #b7b3b3;
+    padding: 0.75rem 0.55rem;
+    width: 100% !important;
+    border-radius: 0.25rem;
+    outline: none;
+    color: #000;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 300ms;
+    box-shadow: none !important;
+    background: #fff;
+    height: 45px;
+  }
+  

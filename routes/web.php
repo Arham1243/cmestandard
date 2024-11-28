@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminDashController;
+use App\Http\Controllers\Admin\BulkActionController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\SiteSettingsController;
 use App\Http\Controllers\FrontEndEditorController;
@@ -94,10 +95,7 @@ Route::middleware(['admin'])->prefix('admin')->namespace('admin')->group(functio
 
 
 
-
-
-
-
+  Route::post('bulk-actions/{resource}', [BulkActionController::class, 'handle'])->name('admin.bulk-actions');
 
 
   // ---------------------------------------Inquiries---------------------------------------
