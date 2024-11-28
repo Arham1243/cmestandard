@@ -302,7 +302,7 @@ class SiteSettingsController extends Controller
 
     public function cms()
     {
-        $contents = Content::get();
+        $contents = Content::latest()->get();
         return view('admin.cms.list')->with(compact('contents'));
     }
 

@@ -43,7 +43,7 @@ class TeamController extends Controller
 
     public function team_listing()
     {
-        $team = Team::get();
+        $team = Team::latest()->get();
         return view('admin.team-management.list')->with('title','Team Management')->with('team_menu',true)->with(compact('team'));
     }
 

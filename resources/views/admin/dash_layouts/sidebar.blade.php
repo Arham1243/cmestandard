@@ -25,7 +25,7 @@
                 </a>
                 <div class="custom-dropdown__values">
                     <ul class="values-wrapper">
-                        <li><a class="{{ Request::url() == route('admin.cme_categories_listing') ? 'active' : '' }}"
+                        <li><a class="{{ Request::url() == route('admin.training_listing') ? 'active' : '' }}"
                                 href="{{ route('admin.training_listing') }}">All Trainings</a></li>
                         <li><a class="{{ Request::url() == route('admin.cme_categories_listing') ? 'active' : '' }}"
                                 href="{{ route('admin.cme_categories_listing') }}">Categories</a></li>

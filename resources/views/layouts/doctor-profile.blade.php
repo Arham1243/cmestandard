@@ -144,7 +144,7 @@
                                     <td>{{ $training->custom_id }}</td>
                                     <td class="text-start">{{ $training->title }}</td>
                                     <td>{{ $training->category->name ?? '' }}</td>
-                                    <td>{{ $training->grand_provide }}</td>
+                                    <td>{{ $training->provider }}</td>
                                     <td>{{ $training->format }}</td>
                                     <td>{{ $training->type }}</td>
                                     <td>{{ $training->status }}</td>

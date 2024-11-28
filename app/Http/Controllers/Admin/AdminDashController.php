@@ -39,7 +39,7 @@ class AdminDashController extends Controller
 
     public function dashboard()
     {
-        $users = User::get();
+        $users = User::latest()->get();
         return view('admin.dashboard')->with('title', 'Admin Dashboard')->with('user_menu', true)->with(compact('users'));
     }
 
@@ -112,7 +112,7 @@ class AdminDashController extends Controller
 
     public function inquiries_listing()
     {
-        $inquiries = Inquiry::get();
+        $inquiries = Inquiry::latest()->get();
         return view('admin.inquiries.list')->with('title', 'Inquiries')->with('inquiry_menu', true)->with(compact('inquiries'));
     }
 
@@ -136,7 +136,7 @@ class AdminDashController extends Controller
 
     public function quotes_listing()
     {
-        $quotes = Quote::get();
+        $quotes = Quote::latest()->get();
         return view('admin.quotes.list')->with('title', 'Quotes')->with(compact('quotes'));
     }
 
@@ -445,7 +445,7 @@ class AdminDashController extends Controller
 
     public function services_listing()
     {
-        $services = Services::get();
+        $services = Services::latest()->get();
         return view('admin.services-management.list')->with('title', 'Services Management')->with(compact('services'));
     }
 
@@ -570,7 +570,7 @@ class AdminDashController extends Controller
 
     public function newsletter_listing()
     {
-        $newsletter = Newsletter::get();
+        $newsletter = Newsletter::latest()->get();
         return view('admin.newsletter.list')->with('title', 'Newsletter Listing')->with('newslettermenu', true)->with(compact('newsletter'));
     }
 
@@ -582,13 +582,13 @@ class AdminDashController extends Controller
 
     public function blog_listing()
     {
-        $blog = Blog::get();
+        $blog = Blog::latest()->get();
         return view('admin.blog-management.list')->with('title', 'Blog Management')->with(compact('blog'));
     }
 
     public function add_blog()
     {
-        $categories = Blog_categories::get();
+        $categories = Blog_categories::latest()->get();
         $data = compact('categories');
         return view('admin.blog-management.add')->with('title', 'Add Blog')->with($data);
     }
@@ -851,7 +851,7 @@ class AdminDashController extends Controller
 
     public function news_listing()
     {
-        $news = News::get();
+        $news = News::latest()->get();
         return view('admin.news-management.list')->with('title', 'news Management')->with('news_menu', true)->with(compact('news'));
     }
 
@@ -944,7 +944,7 @@ class AdminDashController extends Controller
 
     public function partner_listing()
     {
-        $partner = Partner::get();
+        $partner = Partner::latest()->get();
         return view('admin.partner-management.list')->with('title', 'Partner Management')->with('partner_menu', true)->with(compact('partner'));
     }
 
@@ -1026,7 +1026,7 @@ class AdminDashController extends Controller
 
     public function category_listing()
     {
-        $category = Category::get();
+        $category = Category::latest()->get();
         return view('admin.category-management.list')->with('title', 'Category Management')->with(compact('category'));
     }
 
@@ -1185,7 +1185,7 @@ class AdminDashController extends Controller
 
     public function brand_listing()
     {
-        $brand = Brand::get();
+        $brand = Brand::latest()->get();
         return view('admin.brand-management.list')->with('title', 'Brand Management')->with('brand_menu', true)->with(compact('brand'));
     }
 
@@ -1270,7 +1270,7 @@ class AdminDashController extends Controller
 
     public function orders_listing()
     {
-        $orders = Orders::get();
+        $orders = Orders::latest()->get();
         return view('admin.orders-management.list')->with('title', 'Orders Management')->with(compact('orders'));
     }
 
@@ -1382,7 +1382,7 @@ class AdminDashController extends Controller
 
     public function blog_category_listing()
     {
-        $categories = Blog_categories::get();
+        $categories = Blog_categories::latest()->get();
         return view('admin.blog-category-management.list')->with('title', 'Blog Category Management')->with(compact('categories'));
     }
 
@@ -1447,7 +1447,7 @@ class AdminDashController extends Controller
 
     public function packages_listing()
     {
-        $packages = Package::get();
+        $packages = Package::latest()->get();
         return view('admin.packages-management.list')->with('title', 'Packages Management')->with(compact('packages'));
     }
 
@@ -1544,7 +1544,7 @@ class AdminDashController extends Controller
 
     public function template_listing()
     {
-        $templates = Template::get();
+        $templates = Template::latest()->get();
         return view('admin.template-management.list')->with('title', 'Templates Management')->with(compact('templates'));
     }
 
@@ -1623,7 +1623,7 @@ class AdminDashController extends Controller
 
     public function gallery_listing()
     {
-        $galleries = Gallery::get();
+        $galleries = Gallery::latest()->get();
         return view('admin.gallery-management.list', ['title' => 'Galleries Management', 'galleries' => $galleries]);
     }
 
@@ -1687,7 +1687,7 @@ class AdminDashController extends Controller
 
     public function contest_listing()
     {
-        $contests = Contest::all();
+        $contests = Contest::latest()->get();
         return view('admin.contest-management.list', compact('contests'));
     }
 
@@ -1752,7 +1752,7 @@ class AdminDashController extends Controller
 
     public function listParticipants()
     {
-        $contest_participants = Contest_participants::all();
+        $contest_participants = Contest_participants::latest()->get();
         return view('admin.participant-management.list', compact('contest_participants'));
     }
 
@@ -1830,7 +1830,7 @@ class AdminDashController extends Controller
 
     public function planning_listing()
     {
-        $planning = Planning::all();
+        $planning = Planning::latest()->get();
         return view('admin.planning-tip-management.list')->with('title', 'Planning Tips Management')->with(compact('planning'));
     }
 
@@ -1915,7 +1915,7 @@ class AdminDashController extends Controller
 
     public function party_listing()
     {
-        $parties = Party::get();
+        $parties = Party::latest()->get();
         return view('admin.party-package-management.list', ['title' => 'Party Packages Management', 'parties' => $parties]);
     }
 
@@ -1985,7 +1985,7 @@ class AdminDashController extends Controller
 
     public function product_category_listing()
     {
-        $categories = Product_categories::get();
+        $categories = Product_categories::latest()->get();
         return view('admin.product-category-management.list')->with('title', 'Product Category Management')->with(compact('categories'));
     }
 
@@ -2081,7 +2081,7 @@ class AdminDashController extends Controller
 
     public function speciality_areas_listing()
     {
-        $sepcialiy_areas = Users_speciality_areas::get();
+        $sepcialiy_areas = Users_speciality_areas::latest()->get();
         return view('admin.speciality-areas.list')->with('title', 'Users Sepcialiy Areas Management')->with(compact('sepcialiy_areas'));
     }
 
@@ -2145,7 +2145,7 @@ class AdminDashController extends Controller
 
     public function speciality_interests_listing()
     {
-        $speciality_interests = Users_speciality_interests::get();
+        $speciality_interests = Users_speciality_interests::latest()->get();
         return view('admin.speciality-interests.list')->with('title', 'Users speciality Interests Management')->with(compact('speciality_interests'));
     }
 
@@ -2208,7 +2208,7 @@ class AdminDashController extends Controller
 
     public function cme_categories_listing()
     {
-        $cme_categories = Activity_categories::get();
+        $cme_categories = Activity_categories::latest()->get();
         return view('admin.cme-categories.list')->with('title', 'Activity Categories')->with(compact('cme_categories'));
     }
 
@@ -2271,7 +2271,7 @@ class AdminDashController extends Controller
 
     public function badges_management_listing()
     {
-        $badges = Badges::get();
+        $badges = Badges::latest()->get();
         return view('admin.badges-management.list')->with('title', 'Badges Management')->with(compact('badges'));
     }
 
@@ -2343,7 +2343,7 @@ class AdminDashController extends Controller
 
     public function training_listing()
     {
-        $trainings = Doctor_activity::all();
+        $trainings = Doctor_activity::latest()->get();
         return view('admin.trainings-management.list')->with('title', ' All Trainings')->with(compact('trainings'));
     }
 
