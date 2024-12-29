@@ -25,8 +25,8 @@
                             <thead>
                                 <tr>
                                     <th>S.No</th>
-                                    <th>Badge</th>
                                     <th>View Profile</th>
+                                    <th>Badge</th>
                                     <th>Full Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
