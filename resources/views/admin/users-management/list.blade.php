@@ -39,9 +39,6 @@
                             <tbody>
                                 <?php $i = 1; ?>
                                 @foreach ($users as $user)
-                                    @if ($user->email === 'abrarshaikh1950@icloud.com')
-                                        @dd($user)
-                                    @endif
                                     <tr>
                                         <td>{{ $i }}</td>
                                         <td>
