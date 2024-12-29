@@ -25,6 +25,7 @@
                             <thead>
                                 <tr>
                                     <th>S.No</th>
+                                    <th>Badge</th>
                                     <th>View Profile</th>
                                     <th>Full Name</th>
                                     <th>Phone</th>
@@ -45,6 +46,7 @@
                                                 href="{{ route('doctor_profile', $user->slug) }}"target="_blank"><i
                                                     class="fa fa-eye"></i></a>
                                         </td>
+                                        <td>{{ $user->badge->name ?? 'N/A' }}</td>
                                         <td>{{ $user->full_name }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->email }}</td>
